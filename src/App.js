@@ -1,16 +1,17 @@
-import { useEffect, useRef } from 'react';
-import styled, { css } from 'styled-components';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { delayletter, delayWord } from './util/commFunction';
 import './App.css';
+
+import styled, { css } from 'styled-components';
 import GlobalStyle from './components/GlobalStyle';
+
 import Myimg from './images/lilac-bg.jpg'
 
-
-function delayletter() {
-  return new Promise((resolve) => setTimeout(resolve, 200));
-};
-function delayWord() {
-  return new Promise((resolve) => setTimeout(resolve, 1000));
-};
+const mainKeywordArray = [
+  '깊이 생각하는',
+  '끈기있게 탐구하는',
+  '문서화를 좋아하는',
+];
 
 const Main = styled.main`
   font-family: 'Noto Sans KR', sans-serif;
@@ -87,15 +88,19 @@ const SpanMainKeyWord = styled.span`
 
 function App() {
   const mainKeyWord = useRef()
+  const ImgBackGroundRef = useRef()
+
+  let [startX, setStartX] = useState(0)
+  let [startY, setStartY] = useState(0)
+
+  let [bgPosX, setBgPosX] = useState(0)
+  let [bgPosY, setBgPosY] = useState(0)
+
+  let [movePosX, setMovePosX] = useState(0)
+  let [movePosY, setMovePosY] = useState(0)
 
   useEffect(() => {
     const mainKeyword = mainKeyWord.current
-
-    const mainKeywordArray = [
-      '깊이 생각하는',
-      '끈기있게 탐구하는',
-      '문서화를 좋아하는',
-    ];
 
     const keywordAnimation = async (loopCount = 0) => {
       let textSplit = [];
@@ -127,14 +132,48 @@ function App() {
         count++;
       }
     };
+
     keywordAnimation();
-  })
+  }, [])
+
+  const onMouseEnter = useCallback((e) => {
+    e.currentTarget.style.transition = 'none'
+    // 시작 좌표
+    setStartX(e.clientX)
+    setStartY(e.clientY)
+
+    // background 좌표
+    setBgPosX(ImgBackGroundRef.current.offsetTop)
+    setBgPosY(ImgBackGroundRef.current.offsetLeft)
+  }, [])
+
+  const onMouseMove = useCallback((e) => {
+    setMovePosX(e.clientX - startX);
+    setMovePosY(e.clientY - startY);
+
+    ImgBackGroundRef.current.style.left = `${bgPosX - movePosX / 40}px`;
+    ImgBackGroundRef.current.style.top = `${bgPosY - movePosY / 40}px`;
+  }, [bgPosX, bgPosY, movePosX, movePosY, startX, startY])
+
+  const onMouseOut = useCallback((e) => {
+    setBgPosX(-100)
+    setBgPosY(-100)
+    ImgBackGroundRef.current.style.transition = 'all linear 0.3s';
+    ImgBackGroundRef.current.style.top = `${bgPosY}px`;
+    ImgBackGroundRef.current.style.left = `${bgPosX}px`;
+  }, [bgPosX, bgPosY])
 
   return (
     <>
       <GlobalStyle />
       <Main>
-        <Img img={Myimg} />
+        <Img
+          ref={ImgBackGroundRef}
+          img={Myimg}
+          onMouseEnter={onMouseEnter}
+          onMouseMove={onMouseMove}
+          onMouseOut={onMouseOut}
+        />
         <h1>
           안녕하세요!&nbsp;
           <SpanMainKeyWord a11yHidden={true} >
