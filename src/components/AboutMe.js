@@ -1,6 +1,54 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// http://jsfiddle.net/xwmWK/
+// hover before transition
+const IntroduceLinkWrapper = styled.div`
+    margin-top: 50px;
+    position: relative;
+    
+     & a {
+        display: inline-block;
+        color: #514862;
+        border: 2px solid #514862;
+        border-radius: 50px;
+        padding: 15px 30px;
+        
+        text-decoration: none;
+
+        overflow: hidden; 
+        position: relative;
+
+        &::before{
+            content: '';
+            background: #a2a1dc;
+            z-index: -1;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0px;
+            height: 100%;
+
+            transition: all .7s;
+            opacity: 0.5;
+        }
+        &:hover{
+            font-weight: 800;
+
+            &::before{
+                content: '';
+                width: 100%;
+                background: #a2a1dc;
+            }
+        }
+
+        & + a {
+            margin-left: 5px;
+        }
+     }
+`;
+
 function AboutMe() {
     return (
         <Section>
@@ -30,10 +78,22 @@ function AboutMe() {
                         동료들의 의견을 들어주고 같이 협력할 수 있는 일원이 되길 희망합니다.<br />
                     </p>
 
-                    <div>
-                        <button>이력서 바로가기</button>
-                        <button>GitHub 바로가기</button>
-                    </div>
+                    <IntroduceLinkWrapper>
+                        <a
+                            href="http://www.naver.com"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            이력서 바로가기
+                        </a>
+                        <a
+                            href="https://github.com/oshosh"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            GitHub 바로가기
+                        </a>
+                    </IntroduceLinkWrapper>
                 </TextWrapper>
 
                 <SkillWraper className='skill-text-wrap' >
@@ -112,7 +172,6 @@ const TextWrapper = styled.div`
     box-sizing: border-box;
     text-align: left;
     line-height: 1.6;
-    /* background: tomato; */
 
     & p:first-child {
         font-family: 'Noto Sans KR', sans-serif;

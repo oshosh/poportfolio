@@ -6,6 +6,12 @@ import styled, { css } from 'styled-components';
 import Myimg from '../images/lilac-bg.jpg'
 import GlobalStyle from './GlobalStyle';
 
+const mainKeywordArray = [
+    '깊이 생각하는',
+    '끈기있게 탐구하는',
+    '문서화를 좋아하는',
+];
+
 function Header() {
 
     const mainKeyWord = useRef()
@@ -98,7 +104,7 @@ function Header() {
                 <h1>
                     안녕하세요!&nbsp;
                     <SpanMainKeyWord a11yHidden={true} >
-                        '깊이 생각하는', '끈기있게 탐구하는', '문서화를 좋아하는',
+                        {mainKeywordArray}
                     </SpanMainKeyWord>
 
                     <SpanMainKeyWord ref={mainKeyWord}></SpanMainKeyWord><br />
@@ -112,12 +118,6 @@ function Header() {
 export default Header;
 
 /* compontents */
-const mainKeywordArray = [
-    '깊이 생각하는',
-    '끈기있게 탐구하는',
-    '문서화를 좋아하는',
-];
-
 const Main = styled.main`
     font-family: 'Noto Sans KR', sans-serif;
     display: flex;
