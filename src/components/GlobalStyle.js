@@ -13,10 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
     body.active {
         overflow: hidden;
-        -ms-overflow-style: none;
-        /* IE and Edge */
         scrollbar-width: none;
-        /* Firefox */
     }
 
     body.active::-webkit-scrollbar {

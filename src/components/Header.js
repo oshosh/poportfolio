@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components';
 import Myimg from '../images/lilac-bg.jpg'
 import GlobalStyle from './GlobalStyle';
 
+
 const mainKeywordArray = [
     '깊이 생각하는',
     '끈기있게 탐구하는',

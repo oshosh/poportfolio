@@ -1,54 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// http://jsfiddle.net/xwmWK/
-// hover before transition
-const IntroduceLinkWrapper = styled.div`
-    margin-top: 50px;
-    position: relative;
-    
-     & a {
-        display: inline-block;
-        color: #514862;
-        border: 2px solid #514862;
-        border-radius: 50px;
-        padding: 15px 30px;
-        
-        text-decoration: none;
-
-        overflow: hidden; 
-        position: relative;
-
-        &::before{
-            content: '';
-            background: #a2a1dc;
-            z-index: -1;
-
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0px;
-            height: 100%;
-
-            transition: all .7s;
-            opacity: 0.5;
-        }
-        &:hover{
-            font-weight: 800;
-
-            &::before{
-                content: '';
-                width: 100%;
-                background: #a2a1dc;
-            }
-        }
-
-        & + a {
-            margin-left: 5px;
-        }
-     }
-`;
-
 function AboutMe() {
     return (
         <Section>
@@ -229,3 +181,50 @@ const SkillText = styled.div`
     width: 50%;
     box-sizing: border-box;
 `
+// http://jsfiddle.net/xwmWK/
+// hover before transition
+const IntroduceLinkWrapper = styled.div`
+    margin-top: 50px;
+    position: relative;
+    
+     & a {
+        display: inline-block;
+        color: #514862;
+        border: 2px solid #514862;
+        border-radius: 50px;
+        padding: 15px 30px;
+        
+        text-decoration: none;
+
+        overflow: hidden; 
+        position: relative;
+
+        &::before{
+            content: '';
+            background: #a2a1dc;
+            z-index: -1;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0px;
+            height: 100%;
+
+            transition: all .7s;
+            opacity: 0.5;
+        }
+        &:hover{
+            font-weight: 800;
+
+            &::before{
+                content: '';
+                width: 100%;
+                background: #a2a1dc;
+            }
+        }
+
+        & + a {
+            margin-left: 5px;
+        }
+     }
+`;
