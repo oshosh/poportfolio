@@ -9,7 +9,7 @@ function AboutMe() {
                     <span><b>ABOUT</b> ME</span>
                 </h2>
                 <TextWrapper className='introduce-text-wrap'>
-                    <p class="introduce-title">안녕하세요 :D</p>
+                    <p className="introduce-title">안녕하세요 :D</p>
 
                     <p>
                         '깊이 생각하는', '끈기있게 탐구하는', '문서화를 좋아하는'<br />
