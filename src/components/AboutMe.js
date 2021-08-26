@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
-function AboutMe() {
+
+function AboutMe({ forwardRef1 }) {
     return (
-        <Section>
+        <Section id='about-me' ref={forwardRef1}>
             <div className='wrap-1200 common-group'>
                 <h2>
                     <span><b>ABOUT</b> ME</span>
@@ -79,7 +80,7 @@ function AboutMe() {
     );
 }
 
-export default AboutMe;
+export default forwardRef(AboutMe);
 
 
 const Section = styled.section`
