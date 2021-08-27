@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 import AboutMeImg from '../images/chat_w.png'
 import WorksImg from '../images/code_w.png'
+import FooterImg from '../images/mail_w.png'
 
 function Navigation(props) {
 
-  const { aboutMefowardRef, workForwardRef } = props;
+  const { aboutMefowardRef, workForwardRef, footerForwardRef } = props;
 
   const smoothScroll = (componetRef) => {
     window.scrollTo({
@@ -19,14 +20,22 @@ function Navigation(props) {
 
   const OnMoveNavClick = useCallback((e) => {
     e.preventDefault();
-    if (e.target.classList.value === 'menu-link about') {
-      smoothScroll(aboutMefowardRef)
 
-    } else if (e.target.classList.value === 'menu-link works') {
-      smoothScroll(workForwardRef)
+    switch (e.target.classList.value) {
+      case 'menu-link about':
+        smoothScroll(aboutMefowardRef)
+        break;
+      case 'menu-link works':
+        smoothScroll(workForwardRef)
+        break;
+      case 'menu-link footer':
+        smoothScroll(footerForwardRef)
+        break;
+      default:
+        console.log('default')
+        break;
     }
-
-  }, [aboutMefowardRef, workForwardRef]);
+  }, [aboutMefowardRef, workForwardRef, footerForwardRef]);
 
   return (
     <NavMenu className="menu-wrap">
@@ -49,10 +58,10 @@ function Navigation(props) {
         </li>
         <li>
           <a
-            href="#works"
-            className="menu-link works"
+            href="#footer"
+            className="menu-link footer"
             onClick={OnMoveNavClick}
-          >works
+          >footer
           </a>
         </li>
       </ul>
@@ -61,7 +70,8 @@ function Navigation(props) {
 }
 Navigation.prototype = {
   aboutMefowardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
-  workForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) })
+  workForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+  footerForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) })
 }
 export default Navigation;
 
@@ -112,4 +122,9 @@ const NavMenu = styled.nav`
     background-size: 55%;
   }
 
+  & .footer {
+    background: url(${FooterImg}) center no-repeat; 
+    background-size: 55%;
+  }
+  
 `;

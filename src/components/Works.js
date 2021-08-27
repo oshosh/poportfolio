@@ -27,8 +27,8 @@ function Works({ forwardRef2 }) {
 
         // load 
         slideWrap.querySelectorAll('.slide').forEach((slide, index) => {
-            slideWrap.style.cssText = `transform: translate(${currentSlide * -150}%, 0);`;
-            slide.style.cssText = `opacity: 1; transform: translate(${index * 150}%, 0)`;
+            slideWrap.style.cssText = `transform: translate(${currentSlide * -155}%, 0);`;
+            slide.style.cssText = `opacity: 1; transform: translate(${index * 155}%, 0)`;
         });
 
         slide.forEach((_, index) => {
@@ -47,7 +47,7 @@ function Works({ forwardRef2 }) {
                 });
 
                 // 슬라이더 이동
-                slideWrap.style.cssText = `transform: translate(${currentSlide * -150}%, 0); transition: all ${speed};`;
+                slideWrap.style.cssText = `transform: translate(${currentSlide * -155}%, 0); transition: all ${speed};`;
 
                 // 슬라이더 버튼 활성화 세팅
                 slideIndicatorWrap.querySelectorAll('.slide-button')

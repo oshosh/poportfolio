@@ -10,3 +10,4 @@ export const mainKeywordArray = [
     '끈기있게 탐구하는',
     '문서화를 좋아하는',
 ];
+

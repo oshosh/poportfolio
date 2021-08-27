@@ -11,7 +11,8 @@ import { useRef } from 'react';
 
 function App() {
   const aboutMeRef = useRef(null)
-  let worksRef = useRef(null)
+  const worksRef = useRef(null)
+  const footerRef = useRef(null)
 
   return (
     <>
@@ -19,11 +20,12 @@ function App() {
       <Navigation
         aboutMefowardRef={aboutMeRef}
         workForwardRef={worksRef}
+        footerForwardRef={footerRef}
       />
       <Header />
       <AboutMe forwardRef1={aboutMeRef} />
       <Works forwardRef2={worksRef} />
-      <Footer />
+      <Footer forwardRef3={footerRef} />
     </>
 
   );
