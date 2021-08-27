@@ -1,13 +1,16 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Myimg2 from '../images/portfolio01_pc1 (1).png'
+
+import Portfol01 from '../images/portfolio01_douzon.png';
 
 
 function Works({ forwardRef2 }) {
 
-    const slide = useRef()
+    const slide = useRef();
 
     useEffect(() => {
+
         const slideWrap = document.querySelector('.slide-wrap');
         const slide = slideWrap.querySelectorAll('.slide');
 
@@ -26,7 +29,6 @@ function Works({ forwardRef2 }) {
         slideWrap.querySelectorAll('.slide').forEach((slide, index) => {
             slideWrap.style.cssText = `transform: translate(${currentSlide * -150}%, 0);`;
             slide.style.cssText = `opacity: 1; transform: translate(${index * 150}%, 0)`;
-
         });
 
         slide.forEach((_, index) => {
@@ -84,7 +86,7 @@ function Works({ forwardRef2 }) {
                                 {/* https://photoscissors.com/ */}
                                 {/* https://www.iloveimg.com/ko/resize-image */}
                                 {/* 995 * 553 */}
-                                <img src={Myimg2} alt="더존비즈온 위하고 메인" />
+                                <img src={Portfol01} alt="더존비즈온 위하고 메인" />
                             </figure>
                             <p className="time">
                                 <time dateTime="2019-10">2019. 10</time> ~
@@ -146,7 +148,7 @@ function Works({ forwardRef2 }) {
                                 {/* https://photoscissors.com/ */}
                                 {/* https://www.iloveimg.com/ko/resize-image */}
                                 {/* 995 * 553 */}
-                                <img src={Myimg2} alt="더존비즈온 위하고 메인" />
+                                <img src={Portfol01} alt="더존비즈온 위하고 메인" />
                             </figure>
                             <p className="time">
                                 <time dateTime="2019-10">2019. 10</time> ~
@@ -217,6 +219,10 @@ function Works({ forwardRef2 }) {
         </WorkSection>
     );
 }
+
+Works.prototype = {
+    forwardRef2: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+};
 
 export default forwardRef(Works);
 

@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 
@@ -79,6 +80,10 @@ function AboutMe({ forwardRef1 }) {
         </Section >
     );
 }
+
+AboutMe.prototype = {
+    forwardRef1: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+};
 
 export default forwardRef(AboutMe);
 

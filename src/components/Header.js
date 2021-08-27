@@ -1,78 +1,33 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { delayletter, delayWord } from '../util/commFunction';
+import { delayletter, delayWord, mainKeywordArray } from '../util/commFunction';
 
 import styled, { css } from 'styled-components';
 
 import Myimg from '../images/lilac-bg.jpg'
 import GlobalStyle from './GlobalStyle';
 
-
-const mainKeywordArray = [
-    '깊이 생각하는',
-    '끈기있게 탐구하는',
-    '문서화를 좋아하는',
-];
-
 function Header() {
+    const mainKeyWord = useRef();
+    const ImgBackGroundRef = useRef();
 
-    const mainKeyWord = useRef()
-    const ImgBackGroundRef = useRef()
+    let [startX, setStartX] = useState(0);
+    let [startY, setStartY] = useState(0);
 
-    let [startX, setStartX] = useState(0)
-    let [startY, setStartY] = useState(0)
+    let [bgPosX, setBgPosX] = useState(0);
+    let [bgPosY, setBgPosY] = useState(0);
 
-    let [bgPosX, setBgPosX] = useState(0)
-    let [bgPosY, setBgPosY] = useState(0)
-
-    let [movePosX, setMovePosX] = useState(0)
-    let [movePosY, setMovePosY] = useState(0)
-
-    useEffect(() => {
-        const mainKeyword = mainKeyWord.current
-
-        const keywordAnimation = async (loopCount = 0) => {
-            let textSplit = [];
-            let count = 0;
-
-            textSplit = mainKeywordArray.reduce((acc, current) => {
-                let obj = []
-                obj.push(current.split(''))
-                acc = acc.concat(obj)
-                return acc
-            }, [])
-
-            while (loopCount !== textSplit.length && count < textSplit[loopCount].length) {
-                // 글자 노출
-                await delayletter();
-                mainKeyword.append(textSplit[loopCount][count]);
-
-                // 끝나면 초기화
-                if (count === textSplit[loopCount].length - 1) {
-                    await delayWord();
-
-                    textSplit.length - 1 === loopCount
-                        ? keywordAnimation((loopCount = 0))
-                        : keywordAnimation(loopCount + 1);
-
-                    mainKeyword.textContent = '';
-                    return false;
-                }
-                count++;
-            }
-        };
-
-        keywordAnimation();
-    }, [])
+    let [movePosX, setMovePosX] = useState(0);
+    let [movePosY, setMovePosY] = useState(0);
 
     const onMouseEnter = useCallback((e) => {
-        e.currentTarget.style.transition = 'none'
+        e.currentTarget.style.transition = 'none';
         // 시작 좌표
-        setStartX(e.clientX)
-        setStartY(e.clientY)
+        setStartX(e.clientX);
+        setStartY(e.clientY);
 
         // background 좌표
-        setBgPosX(ImgBackGroundRef.current.offsetTop)
-        setBgPosY(ImgBackGroundRef.current.offsetLeft)
+        setBgPosX(ImgBackGroundRef.current.offsetTop);
+        setBgPosY(ImgBackGroundRef.current.offsetLeft);
     }, [])
 
     const onMouseMove = useCallback((e) => {
@@ -84,12 +39,47 @@ function Header() {
     }, [bgPosX, bgPosY, movePosX, movePosY, startX, startY])
 
     const onMouseOut = useCallback((e) => {
-        setBgPosX(-100)
-        setBgPosY(-100)
+        setBgPosX(-100);
+        setBgPosY(-100);
         ImgBackGroundRef.current.style.transition = 'all linear 0.3s';
         ImgBackGroundRef.current.style.top = `${bgPosY}px`;
         ImgBackGroundRef.current.style.left = `${bgPosX}px`;
     }, [bgPosX, bgPosY])
+
+    const keywordAnimation = useCallback(async (loopCount = 0) => {
+        let textSplit = [];
+        let count = 0;
+
+        textSplit = mainKeywordArray.reduce((acc, current) => {
+            let obj = [];
+            obj.push(current.split(''));
+            acc = acc.concat(obj);
+            return acc;
+        }, [])
+        while (loopCount !== textSplit.length && count < textSplit[loopCount].length) {
+            // 글자 노출
+            await delayletter();
+            mainKeyWord.current.append(textSplit[loopCount][count]);
+
+            // 끝나면 초기화
+            if (count === textSplit[loopCount].length - 1) {
+                await delayWord();
+
+                textSplit.length - 1 === loopCount
+                    ? keywordAnimation((loopCount = 0))
+                    : keywordAnimation(loopCount + 1);
+
+                mainKeyWord.current.textContent = '';
+                return false;
+            }
+            count++;
+        }
+    }, [mainKeyWord])
+
+    useEffect(() => {
+        keywordAnimation();
+    }, [keywordAnimation])
+
 
     return (
         <div>
@@ -114,7 +104,7 @@ function Header() {
             </Main>
         </div>
     );
-}
+};
 
 export default Header;
 

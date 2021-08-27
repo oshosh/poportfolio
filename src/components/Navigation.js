@@ -1,48 +1,68 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import ImgSrc from '../images/chat_w.png'
-import ImgSrc2 from '../images/code_w.png'
+import AboutMeImg from '../images/chat_w.png'
+import WorksImg from '../images/code_w.png'
 
 function Navigation(props) {
 
   const { aboutMefowardRef, workForwardRef } = props;
 
+  const smoothScroll = (componetRef) => {
+    window.scrollTo({
+      top: componetRef["current"].offsetTop,
+      left: 0,
+      behavior: 'smooth',
+    })
+  };
+
   const OnMoveNavClick = useCallback((e) => {
     e.preventDefault();
     if (e.target.classList.value === 'menu-link about') {
-      window.scrollTo({
-        top: aboutMefowardRef.current.offsetTop,
-        left: 0,
-        behavior: 'smooth',
-      })
+      smoothScroll(aboutMefowardRef)
+
     } else if (e.target.classList.value === 'menu-link works') {
-      window.scrollTo({
-        top: workForwardRef.current.offsetTop,
-        left: 0,
-        behavior: 'smooth',
-      })
+      smoothScroll(workForwardRef)
     }
 
-  }, [aboutMefowardRef, workForwardRef])
+  }, [aboutMefowardRef, workForwardRef]);
 
   return (
     <NavMenu className="menu-wrap">
       <ul>
         <li>
-          <a href="#about-me" className="menu-link about" onClick={OnMoveNavClick} >about me</a>
+          <a
+            href="#about-me"
+            className="menu-link about"
+            onClick={OnMoveNavClick} >
+            about me
+          </a>
         </li>
         <li>
-          <a href="#works" className="menu-link works" onClick={OnMoveNavClick}>works</a>
+          <a
+            href="#works"
+            className="menu-link works"
+            onClick={OnMoveNavClick}
+          >works
+          </a>
         </li>
         <li>
-          <a href="#works" className="menu-link works" onClick={OnMoveNavClick}>works</a>
+          <a
+            href="#works"
+            className="menu-link works"
+            onClick={OnMoveNavClick}
+          >works
+          </a>
         </li>
       </ul>
     </NavMenu>
   );
 }
-
+Navigation.prototype = {
+  aboutMefowardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+  workForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) })
+}
 export default Navigation;
 
 const NavMenu = styled.nav`
@@ -83,13 +103,13 @@ const NavMenu = styled.nav`
   }
 
   & .about {
-    background: url(${ImgSrc}) center no-repeat; 
+    background: url(${AboutMeImg}) center no-repeat; 
     background-size: 55%;
   }
 
   & .works {
-    background: url(${ImgSrc2}) center no-repeat; 
+    background: url(${WorksImg}) center no-repeat; 
     background-size: 55%;
   }
 
-`
+`;
