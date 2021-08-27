@@ -1,25 +1,21 @@
 {
   "files": {
-    "main.css": "/poportfolio/static/css/main.2ae47eeb.chunk.css",
-    "main.js": "/poportfolio/static/js/main.e245ebb1.chunk.js",
-    "main.js.map": "/poportfolio/static/js/main.e245ebb1.chunk.js.map",
-    "runtime-main.js": "/poportfolio/static/js/runtime-main.e60939f5.js",
-    "runtime-main.js.map": "/poportfolio/static/js/runtime-main.e60939f5.js.map",
-    "static/js/2.93e8da93.chunk.js": "/poportfolio/static/js/2.93e8da93.chunk.js",
-    "static/js/2.93e8da93.chunk.js.map": "/poportfolio/static/js/2.93e8da93.chunk.js.map",
-    "static/js/3.bcbc64c8.chunk.js": "/poportfolio/static/js/3.bcbc64c8.chunk.js",
-    "static/js/3.bcbc64c8.chunk.js.map": "/poportfolio/static/js/3.bcbc64c8.chunk.js.map",
+    "main.js": "/poportfolio/static/js/main.a8b4dacd.chunk.js",
+    "main.js.map": "/poportfolio/static/js/main.a8b4dacd.chunk.js.map",
+    "runtime-main.js": "/poportfolio/static/js/runtime-main.b96309ea.js",
+    "runtime-main.js.map": "/poportfolio/static/js/runtime-main.b96309ea.js.map",
+    "static/js/2.7ad625fe.chunk.js": "/poportfolio/static/js/2.7ad625fe.chunk.js",
+    "static/js/2.7ad625fe.chunk.js.map": "/poportfolio/static/js/2.7ad625fe.chunk.js.map",
     "index.html": "/poportfolio/index.html",
-    "static/css/main.2ae47eeb.chunk.css.map": "/poportfolio/static/css/main.2ae47eeb.chunk.css.map",
-    "static/js/2.93e8da93.chunk.js.LICENSE.txt": "/poportfolio/static/js/2.93e8da93.chunk.js.LICENSE.txt",
+    "static/js/2.7ad625fe.chunk.js.LICENSE.txt": "/poportfolio/static/js/2.7ad625fe.chunk.js.LICENSE.txt",
     "static/media/chat_w.9a4fea75.png": "/poportfolio/static/media/chat_w.9a4fea75.png",
     "static/media/lilac-bg.f9356c39.jpg": "/poportfolio/static/media/lilac-bg.f9356c39.jpg",
-    "static/media/portfolio01_pc1 (1).674c77d1.png": "/poportfolio/static/media/portfolio01_pc1 (1).674c77d1.png"
+    "static/media/mail_w.85012c91.png": "/poportfolio/static/media/mail_w.85012c91.png",
+    "static/media/portfolio01_douzon.674c77d1.png": "/poportfolio/static/media/portfolio01_douzon.674c77d1.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.e60939f5.js",
-    "static/js/2.93e8da93.chunk.js",
-    "static/css/main.2ae47eeb.chunk.css",
-    "static/js/main.e245ebb1.chunk.js"
+    "static/js/runtime-main.b96309ea.js",
+    "static/js/2.7ad625fe.chunk.js",
+    "static/js/main.a8b4dacd.chunk.js"
   ]
 }
