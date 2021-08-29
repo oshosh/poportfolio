@@ -7,9 +7,9 @@ import emailjs from 'emailjs-com';
 import useInput from '../util/useInput';
 function Footer({ forwardRef3 }) {
     dotenv.config();
-    const [name, onChangeName, setName] = useInput('')
-    const [email, onChangeEmail, setEmail] = useInput('')
-    const [textValue, onChangeTextValue, setTextValue] = useInput('')
+    const [name, onChangeName, setName] = useInput('');
+    const [email, onChangeEmail, setEmail] = useInput('');
+    const [textValue, onChangeTextValue, setTextValue] = useInput('');
 
     const onSubmitSend = useCallback((e) => {
         e.preventDefault();
