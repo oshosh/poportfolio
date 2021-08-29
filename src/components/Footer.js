@@ -14,9 +14,9 @@ function Footer({ forwardRef3 }) {
     const onSubmitSend = useCallback((e) => {
         e.preventDefault();
 
-        const SERVICE_ID = process.env.REACT_APP_SERVICE_ID
-        const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID
-        const USER_ID = process.env.REACT_APP_USER_ID
+        const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
+        const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
+        const USER_ID = process.env.REACT_APP_USER_ID;
 
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
             .then((result) => {
