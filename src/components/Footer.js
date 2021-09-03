@@ -1,39 +1,27 @@
 import React, { forwardRef, useCallback } from 'react';
+import PropTypes from 'prop-types';
+
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message'
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import dotenv from "dotenv";
 import emailjs from 'emailjs-com';
+
+
 dotenv.config();
-
-const RequiredText = styled.p`
-    font-size: 0.9rem;
-    margin-top: 1px;
-    color: #bf1650;
-
-     &::before {
-        content: "⚠ ";
-        display: inline;
-     }
-`;
-
 function Footer({ forwardRef3 }) {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
     const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
     const USER_ID = process.env.REACT_APP_USER_ID;
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmitSend = useCallback((e) => {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, watch(), USER_ID)
             .then((result) => {
-                console.log('200')
-                console.log(result.text);
-
                 if (result.text === 'OK') {
                     alert('감사합니다 : )\n빠른시일안에 답변드리겠습니다!')
                 }
-
             }, (error) => {
                 console.error(error);
                 alert('메세지 전송에 실패하였습니다.')
@@ -46,7 +34,6 @@ function Footer({ forwardRef3 }) {
                 <h2><span>CONTACT ME</span></h2>
                 <form onSubmit={handleSubmit(onSubmitSend)}>
                     <FormWrapper className="form-wrap">
-
                         <fieldset className="form-group">
                             <label>Name:</label>
                             <input
@@ -90,8 +77,6 @@ function Footer({ forwardRef3 }) {
                         </fieldset>
                         <SubmitButton className='submit-btn'>SEND MESSAGE</SubmitButton>
                     </FormWrapper>
-
-
                 </form>
             </FooterTop>
             <FooterBottom>
@@ -105,6 +90,18 @@ Footer.prototype = {
 };
 
 export default forwardRef(Footer);
+
+const RequiredText = styled.p`
+    font-size: 0.9rem;
+    margin-top: 1px;
+    color: #bf1650;
+
+     &::before {
+        content: "⚠ ";
+        display: inline;
+     }
+`;
+
 
 const SubmitButton = styled.button`
     margin-top: 20px;
@@ -208,8 +205,6 @@ const FormWrapper = styled.div`
             }
         }
     }
-
-    
 `
 const FooterBottom = styled.div`
     color: #bebebe;
