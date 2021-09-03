@@ -6,5 +6,5 @@
    React-hooks, 
    Styled Compontents, 
    
-   react-hook-form, @hookform/error-message, emailjs-com, dotenv
+   react-hook-form, @hookform/error-message, emailjs-com
 ```
