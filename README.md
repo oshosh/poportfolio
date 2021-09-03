@@ -1,4 +1,4 @@
-# 포트폴리오 사이트 제작
+# 포트폴리오 사이트 제작 (https://oshosh.github.io/poportfolio/)
 
 - Framework
 
@@ -8,5 +8,3 @@
    
    react-hook-form, @hookform/error-message, emailjs-com, dotenv
 ```
-
-https://oshosh.github.io/poportfolio/
