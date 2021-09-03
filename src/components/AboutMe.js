@@ -34,7 +34,7 @@ function AboutMe({ forwardRef1 }) {
 
                     <IntroduceLinkWrapper>
                         <a
-                            href="http://www.naver.com"
+                            href="https://unique-diadem-604.notion.site/f4391fd3ffb34d0fac61019e12270742"
                             target="_blank"
                             rel="noreferrer noopener"
                         >
