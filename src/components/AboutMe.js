@@ -104,7 +104,7 @@ const Section = styled.section`
         font-weight: 400;
         font-size: 2.2rem;
         text-align: center;
-        color: #1d1720;
+        color: ${({ theme }) => theme.colors.titleColor};
         flex-basis: 100%;
 
         & span {
@@ -112,12 +112,7 @@ const Section = styled.section`
         }
         
         & span::after{
-            content: '';
-            display: inline-block;
-            width: 80%;
-            height: 2px;
-            margin: 25px auto 0px;
-            background: #a2a1dc;
+            ${({ theme }) => theme.common.InlineBlockSpanUnderLine};
         }
     }
 
@@ -135,15 +130,15 @@ const TextWrapper = styled.div`
         font-family: 'Noto Sans KR', sans-serif;
         font-size: 1.6rem;
         font-weight: 700;
-        color: #514862;
-
+        color: ${({ theme }) => theme.colors.darkPurple};
+        
         &::before{
             content: '';
             display: block;
             width: 250px;
             height: 250px;
             position: absolute;
-            background: #a2a1dc;
+            background: ${({ theme }) => theme.colors.purple};
             z-index: -1;
             transform: translate(-50%, -25%);
             border-radius: 50%;
@@ -154,7 +149,7 @@ const TextWrapper = styled.div`
     & > p:nth-child(2){
         margin-top: 50px;
         font-size: 1.2rem;
-        color: #a2a1dc;
+        color: ${({ theme }) => theme.colors.purple};
 
         &::after{
             content: '';
@@ -162,7 +157,7 @@ const TextWrapper = styled.div`
             width: 100px;
             height: 100px;
             position: absolute;
-            background: #a2a1dc;
+            background: ${({ theme }) => theme.colors.purple};
             z-index: -1;
             transform: translate(-150%, -65%);
             border-radius: 50%;
@@ -177,7 +172,7 @@ const TextWrapper = styled.div`
 `
 
 const SkillWraper = styled.div`
-     display: flex;
+    display: flex;
     flex-flow: row wrap;
     flex-basis: 55%;
     padding: 10px;
@@ -195,8 +190,8 @@ const IntroduceLinkWrapper = styled.div`
     
      & a {
         display: inline-block;
-        color: #514862;
-        border: 2px solid #514862;
+        color: ${({ theme }) => theme.colors.darkPurple};
+        border: 2px solid ${({ theme }) => theme.colors.darkPurple};
         border-radius: 50px;
         padding: 15px 30px;
         
@@ -207,7 +202,7 @@ const IntroduceLinkWrapper = styled.div`
 
         &::before{
             content: '';
-            background: #a2a1dc;
+            background: ${({ theme }) => theme.colors.purple};
             z-index: -1;
 
             position: absolute;
@@ -225,7 +220,7 @@ const IntroduceLinkWrapper = styled.div`
             &::before{
                 content: '';
                 width: 100%;
-                background: #a2a1dc;
+                background: ${({ theme }) => theme.colors.purple};
             }
         }
 

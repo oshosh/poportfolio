@@ -7,7 +7,8 @@ import Footer from './components/Footer';
 
 import Navigation from './components/Navigation';
 import { useRef } from 'react';
-
+import { ThemeProvider } from 'styled-components';
+import theme from './theme/theme';
 
 function App() {
   const aboutMeRef = useRef(null)
@@ -17,15 +18,17 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Navigation
-        aboutMefowardRef={aboutMeRef}
-        workForwardRef={worksRef}
-        footerForwardRef={footerRef}
-      />
-      <Header />
-      <AboutMe forwardRef1={aboutMeRef} />
-      <Works forwardRef2={worksRef} />
-      <Footer forwardRef3={footerRef} />
+      <ThemeProvider theme={theme}>
+        <Navigation
+          aboutMefowardRef={aboutMeRef}
+          workForwardRef={worksRef}
+          footerForwardRef={footerRef}
+        />
+        <Header />
+        <AboutMe forwardRef1={aboutMeRef} />
+        <Works forwardRef2={worksRef} />
+        <Footer forwardRef3={footerRef} />
+      </ThemeProvider>
     </>
 
   );

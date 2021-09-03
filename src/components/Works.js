@@ -262,19 +262,15 @@ const WorkWrapper = styled.div`
         text-align: center;
         flex-basis: 100%;
         margin: 50px 0;
-        color: #1d1720;
+        color: ${({ theme }) => theme.colors.titleColor};
 
         & span {
             display: inline-block;
         }
 
         & span:after {
-            content: '';
-            display: inline-block;
-            width: 80%;
-            height: 2px;
+            ${({ theme }) => theme.common.InlineBlockSpanUnderLine};
             margin: 25px auto 0px;
-            background: #a2a1dc;
         }
     }
 `
@@ -375,7 +371,7 @@ const WorkTextWrapper = styled.div`
         display: block;
         margin-top: 20px;
         font-size: 1.3rem;
-        color: #514862;
+        color:  ${({ theme }) => theme.colors.darkPurple};
     }
 
     & p {
@@ -417,13 +413,13 @@ const SlideIndicator = styled.div`
         border-radius: 50%;
         font-size: 1.3rem;
         color: #ffffff;
-        background: #a2a1dc;
+        background: ${({ theme }) => theme.colors.purple};
         outline: 0;
         border: 0;
         text-align: center;
         
         &.active {
-        background: #514862;
+        background: ${({ theme }) => theme.colors.darkPurple};
         }
     }
 `;

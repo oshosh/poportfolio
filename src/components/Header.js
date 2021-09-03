@@ -117,11 +117,11 @@ const Main = styled.main`
     position: relative;
     height: 100vh;
     overflow: hidden;
-    background: #a2a1dc;
+    background: ${({ theme }) => theme.colors.purple};
   
     & h1 {
         position: absolute;
-        color: #1d1720;
+        color: ${({ theme }) => theme.colors.titleColor};
         font-size: 4rem;
         font-weight: 400;
         text-shadow: 0 0 40px #e3d0eb;
@@ -177,7 +177,7 @@ const SpanMainKeyWord = styled.span`
         border-right: 4px solid transparent;
       }
       100% {
-        border-right: 4px solid #1d1720;
+        border-right: 4px solid ${({ theme }) => theme.colors.titleColor};
       }
     }
   `

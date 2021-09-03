@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import emailjs from 'emailjs-com';
 
 import useInput from '../util/useInput';
+
+
 function Footer({ forwardRef3 }) {
     dotenv.config();
     const [name, onChangeName, setName] = useInput('');
@@ -33,6 +35,7 @@ function Footer({ forwardRef3 }) {
                 alert('메세지에 실패하였습니다.')
             });
     }, [])
+
     return (
         <FooterWrapper id='footer' ref={forwardRef3}>
             <FooterTop>
@@ -101,7 +104,7 @@ const SubmitButton = styled.button`
     border: 2px solid #fff;
     color: #fff;
     border-radius: 50px;
-    background: #514862;
+    background: ${({ theme }) => theme.colors.darkPurple};
     cursor: pointer;
 `
 
@@ -111,7 +114,7 @@ const FooterWrapper = styled.footer`
     padding: 100px 0 0;
     box-sizing: border-box;
     color: #fff;
-    background: #514862;
+    background: ${({ theme }) => theme.colors.darkPurple};
     overflow: hidden;
 
     text-align: center;
@@ -138,6 +141,10 @@ const FooterTop = styled.div`
         
         & span {
             display: inline-block;
+
+            &::after{
+                ${({ theme }) => theme.common.InlineBlockSpanUnderLine};
+            }
         }       
     }
 `;
