@@ -1,12 +1,12 @@
-import GlobalStyle from './components/GlobalStyle';
+import { useRef } from 'react';
 
-import AboutMe from './components/AboutMe';
+import Navigation from './components/Navigation';
 import Header from './components/Header';
+import AboutMe from './components/AboutMe';
 import Works from './components/Works';
 import Footer from './components/Footer';
 
-import Navigation from './components/Navigation';
-import { useRef } from 'react';
+import GlobalStyle from './components/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import theme from './theme/theme';
 

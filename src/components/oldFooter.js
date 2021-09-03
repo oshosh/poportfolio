@@ -1,32 +1,28 @@
 import React, { forwardRef, useCallback } from 'react';
-import { useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import dotenv from "dotenv";
 import emailjs from 'emailjs-com';
-dotenv.config();
 
-const RequiredText = styled.p`
-    font-size: 0.9rem;
-    margin-top: 1px;
-    color: #bf1650;
+import useInput from '../util/useInput';
 
-     &::before {
-        content: "⚠ ";
-        display: inline;
-     }
-`;
 
 function Footer({ forwardRef3 }) {
-    const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
-    const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
-    const USER_ID = process.env.REACT_APP_USER_ID;
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    dotenv.config();
+    const [name, onChangeName, setName] = useInput('');
+    const [email, onChangeEmail, setEmail] = useInput('');
+    const [textValue, onChangeTextValue, setTextValue] = useInput('');
 
     const onSubmitSend = useCallback((e) => {
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, watch(), USER_ID)
+        e.preventDefault();
+
+        const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
+        const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
+        const USER_ID = process.env.REACT_APP_USER_ID;
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
             .then((result) => {
+
                 console.log('200')
                 console.log(result.text);
 
@@ -38,27 +34,22 @@ function Footer({ forwardRef3 }) {
                 console.error(error);
                 alert('메세지 전송에 실패하였습니다.')
             });
-    }, [SERVICE_ID, TEMPLATE_ID, USER_ID, watch])
+    }, [])
 
     return (
         <FooterWrapper id='footer' ref={forwardRef3}>
             <FooterTop>
                 <h2><span>CONTACT ME</span></h2>
-                <form onSubmit={handleSubmit(onSubmitSend)}>
+                <form onSubmit={onSubmitSend}>
                     <FormWrapper className="form-wrap">
 
                         <fieldset className="form-group">
                             <label>Name:</label>
                             <input
-                                type='text'
                                 name='name'
-                                {...register("name", { required: "필수 입력 사항입니다.", maxLength: 50 })}
+                                value={name}
+                                onChange={onChangeName}
                                 placeholder="이름 / 회사명을 입력해주세요."
-                            />
-                            <ErrorMessage
-                                errors={errors}
-                                name="name"
-                                render={({ message }) => <RequiredText>{message}</RequiredText>}
                             />
                         </fieldset>
 
@@ -69,7 +60,9 @@ function Footer({ forwardRef3 }) {
                                 className="email"
                                 name="email"
                                 type="email"
-                                {...register("email", { required: true, maxLength: 50 })}
+                                value={email}
+                                onChange={onChangeEmail}
+                                required
                                 placeholder="이메일을 입력해주세요."
                             />
                             <span className="email-warning"
@@ -85,13 +78,12 @@ function Footer({ forwardRef3 }) {
                                 name="message"
                                 rows="10"
                                 placeholder="메세지를 입력해주세요."
-                                {...register("message", { required: true })}
+                                value={textValue}
+                                onChange={onChangeTextValue}
                             ></textarea>
                         </fieldset>
                         <SubmitButton className='submit-btn'>SEND MESSAGE</SubmitButton>
                     </FormWrapper>
-
-
                 </form>
             </FooterTop>
             <FooterBottom>
