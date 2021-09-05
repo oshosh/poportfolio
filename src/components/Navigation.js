@@ -251,7 +251,7 @@ const MenuBtn = styled.button`
   margin: 20px ;
   width: 40px;
   height: 40px;
-  cursor: pointer;
+  /* cursor: pointer; */
   opacity: 0;
   
   overflow:hidden;
@@ -265,7 +265,7 @@ const MenuBtn = styled.button`
   @media ${({ theme }) => theme.device.mobile} {
     display: block;
     opacity: 1;
-    z-index: 1000;
+    /* z-index: 1000; */
     /* padding: 20px;? */
     transition: all 0.3s linear 0s;
   }
