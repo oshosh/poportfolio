@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import AboutMeImg from '../images/chat_w.png'
 import WorksImg from '../images/code_w.png'
 import FooterImg from '../images/mail_w.png'
-import OpenBtn from '../images/toggle-btn.svg'
+import OpenBtn from '../images/burger.png'
 import CloseBtn from '../images/close_button.png'
 import GithubLogo from '../images/github.png'
 
@@ -250,8 +250,8 @@ const MenuBtn = styled.button`
   display: none;
 
   position: fixed;
-  top: 20px;
-  right: 25px;
+  top: 8px;
+  right: 12px;
   opacity: 0;
   z-index: 9999;
 
@@ -261,9 +261,8 @@ const MenuBtn = styled.button`
 
   @media ${({ theme }) => theme.device.mobile} {
     display: flex;
-    width: 50px;
-    height: 50px;
-    padding: 25px;
+    width: 70px;
+    height: 70px;
     opacity: 1;
     transition: all 0.3s linear 0s;
     box-sizing: border-box;
