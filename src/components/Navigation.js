@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-import theme from '../theme/theme';
 
 import AboutMeImg from '../images/chat_w.png'
 import WorksImg from '../images/code_w.png'
 import FooterImg from '../images/mail_w.png'
 import OpenBtn from '../images/toggle-btn.svg'
 import CloseBtn from '../images/close_button.png'
+import GithubLogo from '../images/github.png'
 
 
 function Navigation(props) {
@@ -17,6 +16,7 @@ function Navigation(props) {
   const navMenuRef = useRef()
   const menuBtnRef = useRef()
   const menuCloseBtnRef = useRef()
+  const navfooterRef = useRef()
 
   const smoothScroll = (componetRef) => {
     window.scrollTo({
@@ -30,7 +30,9 @@ function Navigation(props) {
     e.preventDefault();
 
     if (menuBtnRef.current.className.includes('active')) {
-
+      menuBtnRef.current.classList.remove('active')
+      navMenuRef.current.classList.remove('active')
+      menuCloseBtnRef.current.classList.remove('active')
     }
 
     switch (e.target.classList.value) {
@@ -56,6 +58,7 @@ function Navigation(props) {
       menuBtnRef.current.classList.add('active')
       menuCloseBtnRef.current.classList.add('active')
       navMenuRef.current.classList.add('active')
+      navfooterRef.current.classList.add('active')
     }
   }, [])
 
@@ -66,6 +69,7 @@ function Navigation(props) {
       menuBtnRef.current.classList.remove('active')
       navMenuRef.current.classList.remove('active')
       menuCloseBtnRef.current.classList.remove('active')
+      navfooterRef.current.classList.remove('active')
     }
   }, [])
 
@@ -105,6 +109,14 @@ function Navigation(props) {
             </a>
           </li>
         </ul>
+        <NavFooter ref={navfooterRef}>
+          <a href="https://github.com/oshosh"
+            target="_blank"
+            className="nav-footer-logo"
+            rel="noreferrer noopener">
+          </a>
+          <p>© 2021 by SE HYUN OH. All rights reserved.</p>
+        </NavFooter>
         <MenuCloseBtn
           ref={menuCloseBtnRef}
           onClick={onMenuCloseBtnClick}
@@ -121,6 +133,114 @@ Navigation.prototype = {
   footerForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) })
 }
 export default Navigation;
+
+
+const NavMenu = styled.nav`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  top: 35%;
+  right: 0;
+  z-index: 99999;
+  width: 60px;
+  border-radius: 30px;
+  color: #fff;
+  background: rgba(0, 0, 0, .6);
+
+  opacity: 1;
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center; 
+    justify-content: center;
+
+    & li {
+      list-style: none;
+    }
+  }
+
+  & a {
+    display: flex;
+    
+    width: 60px;
+    height: 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    text-indent: -9999px;
+  }
+
+  & .about {
+    background: url(${AboutMeImg}) center no-repeat; 
+    background-size: 55%;
+  }
+
+  & .works {
+    background: url(${WorksImg}) center no-repeat; 
+    background-size: 55%;
+  }
+
+  & .footer {
+    background: url(${FooterImg}) center no-repeat; 
+    background-size: 55%;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    top: -120%;
+    width: 100%;
+    height: 100%; 
+    background: #fff;
+    
+    border-radius: 0;
+    padding-top: 200px;
+
+    opacity: 0;
+    overflow-y: hidden;
+
+    & ul{
+      justify-content: flex-start;
+      height: 80vh;
+    }
+    
+    &.active{
+      opacity: 1;
+      top: 0;
+      animation: 0.5s ease-in-out 0s forwards bounce;
+
+      @keyframes bounce {
+        0% {
+          top: -120%;
+        }
+        100% {
+          top: 0;
+        }
+      }
+    }   
+
+    & a {
+      display: block;
+      width: 100%;
+      margin: 30px 0;
+      height: auto;
+      font-size: 2.2rem;
+      text-indent: 0;
+      
+      text-decoration: none;
+      color: #555555;
+    }
+
+    & .about,
+    & .works,
+    & .footer {
+      background: none;
+    }
+   
+  }
+`;
 
 const MenuBtn = styled.button`
   display: none;
@@ -176,105 +296,35 @@ const MenuCloseBtn = styled.button`
   }
 `
 
-const NavMenu = styled.nav`
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  top: 35%;
-  right: 0;
-  z-index: 99999;
-  width: 60px;
-  border-radius: 30px;
-  color: #fff;
-  background: rgba(0, 0, 0, .6);
-
-  opacity: 1;
-
-  & ul {
-    display: flex;
-    flex-direction: column;
-    /* height: 100%; */
-    align-items: center; 
-    justify-content: center;
-
-    & li {
-      list-style: none;
-    }
-  }
-
-  & a {
-    display: flex;
-    
-    width: 60px;
-    height: 80px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;  
-    text-indent: -9999px;
-  }
-
-  & .about {
-    background: url(${AboutMeImg}) center no-repeat; 
-    background-size: 55%;
-  }
-
-  & .works {
-    background: url(${WorksImg}) center no-repeat; 
-    background-size: 55%;
-  }
-
-  & .footer {
-    background: url(${FooterImg}) center no-repeat; 
-    background-size: 55%;
-  }
-
-  @media ${({ theme }) => theme.device.mobile} {
-    top: -120%;
+const NavFooter = styled.div`
+  & {
+    display: none;
+    margin: 0 auto;
     width: 100%;
-    height: 100%; 
-    background: #fff;
+    height: 200px;
     
-    border-radius: 0;
-    padding-top: 200px;
-
-    opacity: 0;
-
-    &.active{
-      opacity: 1;
-      top: 0;
-      animation: 0.5s ease-in-out 0s forwards bounce;
-
-      @keyframes bounce {
-        0% {
-          top: -120%;
-        }
-        100% {
-          top: 0;
-        }
-      }
-    }
-    
-
-    & a {
-      display: block;
-      width: 100%;
-      margin: 30px 0;
-      height: auto;
-      font-size: 2.2rem;
-      text-indent: 0;
-      
-      text-decoration: none;
-      color: #555555;
-    }
-
-    & .about,
-    & .works,
-    & .footer {
-      background: none;
-    }
-   
   }
- 
-`;
+  
+  @media ${({ theme }) => theme.device.mobile} {
+    & {
+      display: block;
+    }
+    
+    & .nav-footer-logo{
+      width: 40px;
+      height: 40px;
+      background: url(${GithubLogo}) center no-repeat;
+      background-size: cover;
+      opacity: 0.5;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    & p{
+      margin: 10px 0 20px;
+      font-size: 0.8rem;
+      color: #808080;
+      text-align: center;
+    }
+  }
+`
