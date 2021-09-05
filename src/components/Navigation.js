@@ -155,13 +155,9 @@ const MenuBtn = styled.button`
     width: 70px;
     height: 70px;
     opacity: 1;
-    top: 25px;
-    right: 25px;
 
-    &.active{
-      width: 70px;
-      height: 70px;
-    }
+    top: 55px;
+    right: 15px;
   }
 `
 
