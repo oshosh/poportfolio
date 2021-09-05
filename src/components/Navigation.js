@@ -254,14 +254,15 @@ const MenuBtn = styled.button`
   /* cursor: pointer; */
   opacity: 0;
   
-  overflow:hidden;
-  z-index: 100;
+  
+  /* overflow:hidden; */
+  /* z-index: 100; */
 
   text-indent: -9999px;
   background: url(${OpenBtn}) center no-repeat;
   background-size: cover ;
   border: none ;
-  
+  background: red;
   @media ${({ theme }) => theme.device.mobile} {
     display: block;
     opacity: 1;
