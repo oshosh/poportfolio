@@ -156,7 +156,8 @@ const MenuBtn = styled.button`
     width: 70px;
     height: 70px;
     opacity: 1;
-
+    top: 118px;
+    right: 112px;
     &.active{
       width: 70px;
       height: 70px;
