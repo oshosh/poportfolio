@@ -252,23 +252,21 @@ const MenuBtn = styled.button`
   position: fixed;
   top: 20px;
   right: 25px;
-  
-  cursor: pointer;
   opacity: 0;
   z-index: 9999;
 
   text-indent: -9999px;
   background: url(${OpenBtn}) center no-repeat;
   background-size: cover ;
-  border: none ;
 
   @media ${({ theme }) => theme.device.mobile} {
-    display: inline-block;
+    display: flex;
     width: 50px;
     height: 50px;
-    padding: 20px;
+    padding: 25px;
     opacity: 1;
     transition: all 0.3s linear 0s;
+    box-sizing: border-box;
   }
 `
 
