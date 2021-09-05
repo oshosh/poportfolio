@@ -156,7 +156,7 @@ const MenuBtn = styled.button`
     height: 70px;
     opacity: 1;
 
-    top: 55px;
+    top: 40px;
     right: 15px;
   }
 `
@@ -271,8 +271,8 @@ const NavMenu = styled.nav`
 const MenuCloseBtn = styled.button`
   display: none;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 40px;
+  right: 15px;
   margin: 20px ;
   width: 50px;
   height: 50px;
