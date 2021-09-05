@@ -249,7 +249,7 @@ const NavMenu = styled.nav`
 const MenuBtn = styled.button`
   display: none;
 
-  position: fixed;
+  position: absolute;
   top: 8px;
   right: 12px;
   opacity: 0;
@@ -260,13 +260,17 @@ const MenuBtn = styled.button`
   background-size: contain;
 
   @media ${({ theme }) => theme.device.mobile} {
-    position: fixed;
     display: block;
     width: 70px;
     height: 70px;
     opacity: 1;
     transition: all 0.3s linear 0s;
     box-sizing: border-box;
+
+    &.active{
+      width: 70px;
+      height: 70px;
+    }
   }
 `
 
