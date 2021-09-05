@@ -249,8 +249,8 @@ const MenuBtn = styled.button`
   position: fixed;
   top: 20px;
   right: 25px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
   opacity: 0;
   z-index: 9999;
@@ -273,8 +273,8 @@ const MenuCloseBtn = styled.button`
   top: 0;
   right: 0;
   margin: 20px ;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
   opacity: 0;
 
