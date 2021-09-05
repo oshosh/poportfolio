@@ -263,6 +263,7 @@ const MenuBtn = styled.button`
     display: inline-block;
     width: 50px;
     height: 50px;
+    padding: 20px;
     opacity: 1;
     transition: all 0.3s linear 0s;
   }
