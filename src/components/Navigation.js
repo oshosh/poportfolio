@@ -147,17 +147,17 @@ const MenuBtn = styled.button`
   z-index: 9999;
 
   /* text-indent: -9999px; */
-  /* background: url(${OpenBtn}) center no-repeat; */
-  /* background-size: contain; */
-  background: red;
+  background: url(${OpenBtn}) center no-repeat;
+  background-size: contain;
 
   @media ${({ theme }) => theme.device.mobile} {
     display: block;
     width: 70px;
     height: 70px;
     opacity: 1;
-    top: 118px;
-    right: 112px;
+    top: 25px;
+    right: 25px;
+
     &.active{
       width: 70px;
       height: 70px;

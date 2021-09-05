@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 
-import Navigation from './components/Navigation';
 import Header from './components/Header';
 import AboutMe from './components/AboutMe';
 import Works from './components/Works';
@@ -24,11 +23,6 @@ function App() {
           workForwardRef={worksRef}
           footerForwardRef={footerRef}
         />
-        {/* <Navigation
-          aboutMefowardRef={aboutMeRef}
-          workForwardRef={worksRef}
-          footerForwardRef={footerRef}
-        /> */}
         <AboutMe forwardRef1={aboutMeRef} />
         <Works forwardRef2={worksRef} />
         <Footer forwardRef3={footerRef} />
