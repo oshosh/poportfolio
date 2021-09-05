@@ -256,8 +256,8 @@ const MenuBtn = styled.button`
   z-index: 9999;
 
   text-indent: -9999px;
-  background: url(${OpenBtn}) center no-repeat;
-  background-size: cover ;
+  background: url(${OpenBtn}) ;
+  /* background-size: cover ; */
   border: none ;
 
   @media ${({ theme }) => theme.device.mobile} {
