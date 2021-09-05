@@ -260,7 +260,8 @@ const MenuBtn = styled.button`
   background-size: contain;
 
   @media ${({ theme }) => theme.device.mobile} {
-    display: flex;
+    position: fixed;
+    display: block;
     width: 70px;
     height: 70px;
     opacity: 1;
