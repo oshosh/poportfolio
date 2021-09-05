@@ -256,7 +256,7 @@ const MenuBtn = styled.button`
   
   
   /* overflow:hidden; */
-  /* z-index: 100; */
+  z-index: 9999;
 
   text-indent: -9999px;
   background: url(${OpenBtn}) center no-repeat;
