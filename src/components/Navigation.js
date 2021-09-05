@@ -249,20 +249,20 @@ const MenuBtn = styled.button`
   position: fixed;
   top: 20px;
   right: 25px;
-  width: 50px;
+  /* width: 50px; */
   height: 50px;
   cursor: pointer;
   opacity: 0;
   z-index: 9999;
 
   text-indent: -9999px;
-  /* background: url(${OpenBtn}) center no-repeat; */
-  background: url(${CloseBtn}) center no-repeat;
+  background: url(${OpenBtn}) center no-repeat;
   background-size: cover ;
   border: none ;
 
   @media ${({ theme }) => theme.device.mobile} {
-    display: block;
+    display: inline-block;
+    width: 50px;
     opacity: 1;
     transition: all 0.3s linear 0s;
   }
