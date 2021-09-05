@@ -265,7 +265,9 @@ const MenuBtn = styled.button`
   @media ${({ theme }) => theme.device.mobile} {
     display: block;
     opacity: 1;
-    transition: all 0.3s linear 0s
+    z-index: 1000;
+    /* padding: 20px;? */
+    transition: all 0.3s linear 0s;
   }
 `
 
