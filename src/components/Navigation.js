@@ -207,7 +207,7 @@ const NavMenu = styled.nav`
 
     & ul{
       justify-content: flex-start;
-      height: 80vh;
+      height: 50vh;
     }
     
     &.active{
