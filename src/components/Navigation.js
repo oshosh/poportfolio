@@ -78,13 +78,15 @@ function Navigation(props) {
 
   return (
     <>
+      <div style={{ display: "block", height: "100%", width: "100%" }}>
+        <MenuBtn
+          ref={menuBtnRef}
+          onClick={onMenuBtnClick}
+        >
+          메뉴 버튼
+        </MenuBtn>
+      </div>
 
-      <MenuBtn
-        ref={menuBtnRef}
-        onClick={onMenuBtnClick}
-      >
-        메뉴 버튼
-      </MenuBtn>
 
       <NavMenu className="menu-wrap" ref={navMenuRef}>
         <ul>
@@ -138,6 +140,32 @@ Navigation.prototype = {
 }
 export default Navigation;
 
+
+const MenuBtn = styled.button`
+  display: none;
+
+  position: fixed;
+  top: 8px;
+  right: 12px;
+  opacity: 0;
+  z-index: 9999;
+
+  text-indent: -9999px;
+  background: url(${OpenBtn}) center no-repeat;
+  background-size: contain;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    display: block;
+    width: 70px;
+    height: 70px;
+    opacity: 1;
+
+    &.active{
+      width: 70px;
+      height: 70px;
+    }
+  }
+`
 
 const NavMenu = styled.nav`
   position: fixed;
@@ -245,34 +273,6 @@ const NavMenu = styled.nav`
    
   }
 `;
-
-const MenuBtn = styled.button`
-  display: none;
-
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  opacity: 0;
-  z-index: 9999;
-
-  text-indent: -9999px;
-  background: url(${OpenBtn}) center no-repeat;
-  background-size: contain;
-
-  @media ${({ theme }) => theme.device.mobile} {
-    display: block;
-    width: 70px;
-    height: 70px;
-    opacity: 1;
-    transition: all 0.3s linear 0s;
-    box-sizing: border-box;
-
-    &.active{
-      width: 70px;
-      height: 70px;
-    }
-  }
-`
 
 const MenuCloseBtn = styled.button`
   display: none;
