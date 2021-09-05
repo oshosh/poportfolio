@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import AboutMeImg from '../images/chat_w.png'
 import WorksImg from '../images/code_w.png'
 import FooterImg from '../images/mail_w.png'
-import OpenBtn from '../images/burger.png'
+import OpenBtn from '../images/toggle-btn.svg'
 import CloseBtn from '../images/close_button.png'
 import GithubLogo from '../images/github.png'
 
@@ -257,7 +257,7 @@ const MenuBtn = styled.button`
 
   text-indent: -9999px;
   background: url(${OpenBtn}) center no-repeat;
-  background-size: cover ;
+  background-size: contain;
 
   @media ${({ theme }) => theme.device.mobile} {
     display: flex;
