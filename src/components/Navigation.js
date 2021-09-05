@@ -77,17 +77,13 @@ function Navigation(props) {
   }, [])
 
   return (
-    <>
-      <div style={{ display: "block", height: "100%", width: "100%" }}>
-        <MenuBtn
-          ref={menuBtnRef}
-          onClick={onMenuBtnClick}
-        >
+    <div style={{ position: "relative", height: "100%", width: "100%" }}>
+      <MenuBtn
+        ref={menuBtnRef}
+        onClick={onMenuBtnClick}
+      >
 
-        </MenuBtn>
-      </div>
-
-
+      </MenuBtn>
       <NavMenu className="menu-wrap" ref={navMenuRef}>
         <ul>
           <li>
@@ -130,7 +126,7 @@ function Navigation(props) {
           메뉴 닫기 버튼
         </MenuCloseBtn>
       </NavMenu>
-    </>
+    </div>
   );
 }
 Navigation.prototype = {
