@@ -144,7 +144,8 @@ const Main = styled.main`
 
   @media ${({ theme }) => theme.device.mobile} {
     & h1 {
-      font-size: 2rem;
+      padding: 0 1rem;
+      font-size: 1.3rem;
     }
   }
 `;

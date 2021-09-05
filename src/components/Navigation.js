@@ -249,25 +249,20 @@ const MenuBtn = styled.button`
   position: fixed;
   top: 20px;
   right: 25px;
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   opacity: 0;
-  
-  
-  /* overflow:hidden; */
   z-index: 9999;
 
   text-indent: -9999px;
   background: url(${OpenBtn}) center no-repeat;
   background-size: cover ;
   border: none ;
-  /* background: red; */
+
   @media ${({ theme }) => theme.device.mobile} {
     display: block;
     opacity: 1;
-    /* z-index: 1000; */
-    /* padding: 20px;? */
     transition: all 0.3s linear 0s;
   }
 `
@@ -278,8 +273,8 @@ const MenuCloseBtn = styled.button`
   top: 0;
   right: 0;
   margin: 20px ;
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   opacity: 0;
 
