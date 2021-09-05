@@ -5,8 +5,9 @@ import styled, { css } from 'styled-components';
 
 import Myimg from '../images/lilac-bg.jpg'
 import GlobalStyle from './GlobalStyle';
+import Navigation from './Navigation';
 
-function Header() {
+function Header(props) {
   const mainKeyWord = useRef();
   const ImgBackGroundRef = useRef();
 
@@ -82,7 +83,7 @@ function Header() {
 
 
   return (
-    <div>
+    <>
       <GlobalStyle />
       <Main>
         <Img
@@ -101,8 +102,9 @@ function Header() {
           <SpanMainKeyWord ref={mainKeyWord}></SpanMainKeyWord><br />
           프론트엔드 개발자 오세현입니다 :D
         </h1>
+        <Navigation {...props} />
       </Main>
-    </div>
+    </>
   );
 };
 

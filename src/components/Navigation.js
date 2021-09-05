@@ -1,14 +1,22 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+import theme from '../theme/theme';
 
 import AboutMeImg from '../images/chat_w.png'
 import WorksImg from '../images/code_w.png'
 import FooterImg from '../images/mail_w.png'
+import OpenBtn from '../images/toggle-btn.svg'
+import CloseBtn from '../images/close_button.png'
+
 
 function Navigation(props) {
-
   const { aboutMefowardRef, workForwardRef, footerForwardRef } = props;
+
+  const navMenuRef = useRef()
+  const menuBtnRef = useRef()
+  const menuCloseBtnRef = useRef()
 
   const smoothScroll = (componetRef) => {
     window.scrollTo({
@@ -20,6 +28,10 @@ function Navigation(props) {
 
   const OnMoveNavClick = useCallback((e) => {
     e.preventDefault();
+
+    if (menuBtnRef.current.className.includes('active')) {
+
+    }
 
     switch (e.target.classList.value) {
       case 'menu-link about':
@@ -37,35 +49,70 @@ function Navigation(props) {
     }
   }, [aboutMefowardRef, workForwardRef, footerForwardRef]);
 
+  const onMenuBtnClick = useCallback((e) => {
+    e.preventDefault();
+
+    if (!menuBtnRef.current.className.includes('active')) {
+      menuBtnRef.current.classList.add('active')
+      menuCloseBtnRef.current.classList.add('active')
+      navMenuRef.current.classList.add('active')
+    }
+  }, [])
+
+  const onMenuCloseBtnClick = useCallback((e) => {
+    e.preventDefault();
+
+    if (menuBtnRef.current.className.includes('active')) {
+      menuBtnRef.current.classList.remove('active')
+      navMenuRef.current.classList.remove('active')
+      menuCloseBtnRef.current.classList.remove('active')
+    }
+  }, [])
+
   return (
-    <NavMenu className="menu-wrap">
-      <ul>
-        <li>
-          <a
-            href="#about-me"
-            className="menu-link about"
-            onClick={OnMoveNavClick} >
-            about me
-          </a>
-        </li>
-        <li>
-          <a
-            href="#works"
-            className="menu-link works"
-            onClick={OnMoveNavClick}
-          >works
-          </a>
-        </li>
-        <li>
-          <a
-            href="#footer"
-            className="menu-link footer"
-            onClick={OnMoveNavClick}
-          >footer
-          </a>
-        </li>
-      </ul>
-    </NavMenu>
+    <>
+      <MenuBtn
+        ref={menuBtnRef}
+        onClick={onMenuBtnClick}
+      >
+        메뉴 버튼
+      </MenuBtn>
+
+      <NavMenu className="menu-wrap" ref={navMenuRef}>
+        <ul>
+          <li>
+            <a
+              href="#about-me"
+              className="menu-link about"
+              onClick={OnMoveNavClick} >
+              about me
+            </a>
+          </li>
+          <li>
+            <a
+              href="#works"
+              className="menu-link works"
+              onClick={OnMoveNavClick}
+            >works
+            </a>
+          </li>
+          <li>
+            <a
+              href="#footer"
+              className="menu-link footer"
+              onClick={OnMoveNavClick}
+            >contact me
+            </a>
+          </li>
+        </ul>
+        <MenuCloseBtn
+          ref={menuCloseBtnRef}
+          onClick={onMenuCloseBtnClick}
+        >
+          메뉴 닫기 버튼
+        </MenuCloseBtn>
+      </NavMenu>
+    </>
   );
 }
 Navigation.prototype = {
@@ -74,6 +121,60 @@ Navigation.prototype = {
   footerForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) })
 }
 export default Navigation;
+
+const MenuBtn = styled.button`
+  display: none;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 20px ;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 0;
+  
+  overflow:hidden;
+  z-index: 100;
+
+  text-indent: -9999px;
+  background: url(${OpenBtn}) center no-repeat;
+  background-size: cover ;
+  border: none ;
+  
+  @media ${({ theme }) => theme.device.mobile} {
+    display: block;
+    opacity: 1;
+    transition: all 0.3s linear 0s
+  }
+`
+
+const MenuCloseBtn = styled.button`
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px ;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 0;
+
+  text-indent: -9999px;
+  background: url(${CloseBtn}) center no-repeat;
+  background-size: cover ;
+  border: none ;
+  
+  @media ${({ theme }) => theme.device.mobile} {
+    opacity: 0;
+    transition: all 0.3s linear 0s;
+
+    &.active {
+      opacity: 1;
+      display: block;
+    }
+  }
+`
 
 const NavMenu = styled.nav`
   position: fixed;
@@ -88,6 +189,8 @@ const NavMenu = styled.nav`
   border-radius: 30px;
   color: #fff;
   background: rgba(0, 0, 0, .6);
+
+  opacity: 1;
 
   & ul {
     display: flex;
@@ -126,5 +229,52 @@ const NavMenu = styled.nav`
     background: url(${FooterImg}) center no-repeat; 
     background-size: 55%;
   }
-  
+
+  @media ${({ theme }) => theme.device.mobile} {
+    top: -120%;
+    width: 100%;
+    height: 100%; 
+    background: #fff;
+    
+    border-radius: 0;
+    padding-top: 200px;
+
+    opacity: 0;
+
+    &.active{
+      opacity: 1;
+      top: 0;
+      animation: 0.5s ease-in-out 0s forwards bounce;
+
+      @keyframes bounce {
+        0% {
+          top: -120%;
+        }
+        100% {
+          top: 0;
+        }
+      }
+    }
+    
+
+    & a {
+      display: block;
+      width: 100%;
+      margin: 30px 0;
+      height: auto;
+      font-size: 2.2rem;
+      text-indent: 0;
+      
+      text-decoration: none;
+      color: #555555;
+    }
+
+    & .about,
+    & .works,
+    & .footer {
+      background: none;
+    }
+   
+  }
+ 
 `;

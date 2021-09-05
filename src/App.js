@@ -19,12 +19,16 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Navigation
+        <Header
           aboutMefowardRef={aboutMeRef}
           workForwardRef={worksRef}
           footerForwardRef={footerRef}
         />
-        <Header />
+        {/* <Navigation
+          aboutMefowardRef={aboutMeRef}
+          workForwardRef={worksRef}
+          footerForwardRef={footerRef}
+        /> */}
         <AboutMe forwardRef1={aboutMeRef} />
         <Works forwardRef2={worksRef} />
         <Footer forwardRef3={footerRef} />

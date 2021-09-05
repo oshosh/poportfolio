@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
         display: block;
     }
 
-    h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, table {
+    h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, table, button {
         margin: 0;
         padding: 0
     }
