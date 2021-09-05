@@ -33,6 +33,7 @@ function Navigation(props) {
       menuBtnRef.current.classList.remove('active')
       navMenuRef.current.classList.remove('active')
       menuCloseBtnRef.current.classList.remove('active')
+      document.body.classList.remove('active')
     }
 
     switch (e.target.classList.value) {
@@ -59,6 +60,7 @@ function Navigation(props) {
       menuCloseBtnRef.current.classList.add('active')
       navMenuRef.current.classList.add('active')
       navfooterRef.current.classList.add('active')
+      document.body.classList.add('active')
     }
   }, [])
 
@@ -70,6 +72,7 @@ function Navigation(props) {
       navMenuRef.current.classList.remove('active')
       menuCloseBtnRef.current.classList.remove('active')
       navfooterRef.current.classList.remove('active')
+      document.body.classList.remove('active')
     }
   }, [])
 
