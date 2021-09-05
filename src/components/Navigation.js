@@ -274,8 +274,8 @@ const MenuCloseBtn = styled.button`
   top: 40px;
   right: 15px;
   margin: 20px ;
-  width: 50px;
-  height: 50px;
+  width: 39px;
+  height: 39px;
   cursor: pointer;
   opacity: 0;
 
