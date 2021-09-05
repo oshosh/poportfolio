@@ -83,7 +83,7 @@ function Navigation(props) {
           ref={menuBtnRef}
           onClick={onMenuBtnClick}
         >
-          메뉴 버튼
+
         </MenuBtn>
       </div>
 
@@ -150,9 +150,10 @@ const MenuBtn = styled.button`
   opacity: 0;
   z-index: 9999;
 
-  text-indent: -9999px;
-  background: url(${OpenBtn}) center no-repeat;
-  background-size: contain;
+  /* text-indent: -9999px; */
+  /* background: url(${OpenBtn}) center no-repeat; */
+  /* background-size: contain; */
+  background: red;
 
   @media ${({ theme }) => theme.device.mobile} {
     display: block;
