@@ -75,6 +75,7 @@ function Navigation(props) {
 
   return (
     <>
+
       <MenuBtn
         ref={menuBtnRef}
         onClick={onMenuBtnClick}
@@ -246,12 +247,11 @@ const MenuBtn = styled.button`
   display: none;
 
   position: fixed;
-  top: 0;
-  right: 0;
-  margin: 20px ;
-  width: 40px;
-  height: 40px;
-  /* cursor: pointer; */
+  top: 20px;
+  right: 25px;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
   opacity: 0;
   
   
@@ -262,7 +262,7 @@ const MenuBtn = styled.button`
   background: url(${OpenBtn}) center no-repeat;
   background-size: cover ;
   border: none ;
-  background: red;
+  /* background: red; */
   @media ${({ theme }) => theme.device.mobile} {
     display: block;
     opacity: 1;
@@ -278,8 +278,8 @@ const MenuCloseBtn = styled.button`
   top: 0;
   right: 0;
   margin: 20px ;
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
   opacity: 0;
 
