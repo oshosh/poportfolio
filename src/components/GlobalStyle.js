@@ -1,10 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-    html, body {
-        width: 100%;
-        height: 100%;
-    }
+    
     body {
         transition: all 1s;
         width: 100%;
@@ -27,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     nav {
         display: block;
     }
-
+    
     button {
         cursor: pointer;
         padding: 0;
