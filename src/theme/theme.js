@@ -30,6 +30,14 @@ const common = {
         width: 80%;
         height: 2px;
         background: ${colors.purple};
+    `,
+    Overlay: `
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
     `
 };
 

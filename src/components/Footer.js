@@ -1,27 +1,20 @@
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { Controller, useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message'
-import styled from 'styled-components';
+
 import dotenv from "dotenv";
 import emailjs from 'emailjs-com';
 import DaumPostcode from 'react-daum-postcode';
-import Modal from './Modoal';
+
+import { postCodeStyle } from '../util/commFunction';
+import Modal from '../commComponents/Modoal';
+import Loader from '../commComponents/Loader';
 
 //https://stackoverflow.com/questions/62040275/how-can-i-access-a-state-hook-value-from-a-callback-passed-to-a-listener
 // 나중에 리사이징 참고
-const postCodeStyle = {
-    display: "block",
-    position: "absolute",
-    // top: "50%",
-    top: "-200%",
-    left: "-10%",
-    width: "400px",
-    height: "500px",
-    padding: "7px",
-};
-
 dotenv.config();
 function Footer({ forwardRef3 }) {
     const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
@@ -35,29 +28,29 @@ function Footer({ forwardRef3 }) {
     const [isPostOpen, setIsPostOpen] = useState(false)
 
     const [modalVisible, setModalVisible] = useState(false)
+    const [loading, setLoading] = useState(null);
+
     const addressControlRef = useRef()
 
     const onSubmitSend = useCallback((e) => {
+        setLoading(true)
         emailjs.send(SERVICE_ID, TEMPLATE_ID, watch(), USER_ID)
             .then((result) => {
                 if (result.text === 'OK') {
+                    setLoading(false)
                     alert('감사합니다 : )\n빠른시일안에 답변드리겠습니다!')
                 }
             }, (error) => {
                 console.error(error);
                 alert('메세지 전송에 실패하였습니다.')
             });
+
     }, [SERVICE_ID, TEMPLATE_ID, USER_ID, watch])
 
-    const openModal = useCallback((e) => {
-        setModalVisible(true)
-    }, [])
+    const openModal = useCallback((e) => setModalVisible(true), [])
+    const closeModal = useCallback((e) => setModalVisible(false), [])
 
-    const closeModal = useCallback((e) => {
-        setModalVisible(false)
-    }, [])
-
-    const onInputClick = useCallback((e) => {
+    const eventAction = useCallback((e, action) => {
         switch (e.target.name) {
             case 'address':
                 openModal()
@@ -67,6 +60,9 @@ function Footer({ forwardRef3 }) {
                 break;
         }
     }, [openModal])
+
+    const onInputClick = useCallback((e) => eventAction(e, 'onInputClick'), [eventAction])
+    const onInputFocus = useCallback((e) => eventAction(e, 'onInputFocus'), [eventAction])
 
     // 다음 API 이벤트
     const handleComplete = useCallback((data) => {
@@ -138,6 +134,8 @@ function Footer({ forwardRef3 }) {
                                         <input
                                             name="address"
                                             onClick={onInputClick}
+                                            onFocus={onInputFocus}
+                                            // onFocus
                                             ref={addressControlRef}
                                             value={isAddress}
                                             onChange={e => {
@@ -193,7 +191,6 @@ function Footer({ forwardRef3 }) {
                 </FooterBottom>
             </FooterWrapper>
 
-
             {
                 modalVisible && <Modal
                     visible={modalVisible}
@@ -211,6 +208,10 @@ function Footer({ forwardRef3 }) {
                     }
                 </Modal>
             }
+
+            {
+                loading && <Loader type="spokes" color="black" message={'데이터 처리중 입니다.'} />
+            }
         </>
     );
 }
@@ -219,28 +220,6 @@ Footer.prototype = {
 };
 
 export default forwardRef(Footer);
-
-const RequiredText = styled.p`
-    font-size: 0.9rem;
-    margin-top: 1px;
-    color: #bf1650;
-
-     &::before {
-        content: "⚠ ";
-        display: inline;
-     }
-`;
-
-
-const SubmitButton = styled.button`
-    margin-top: 20px;
-    padding: 15px 35px;
-    border: 2px solid #fff;
-    color: #fff;
-    border-radius: 50px;
-    background: ${({ theme }) => theme.colors.darkPurple};
-    cursor: pointer;
-`
 
 const FooterWrapper = styled.footer`
     display: block;
@@ -350,4 +329,25 @@ const FooterBottom = styled.div`
         font-size: 80%;
     }
 
+`;
+
+const SubmitButton = styled.button`
+    margin-top: 20px;
+    padding: 15px 35px;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 50px;
+    background: ${({ theme }) => theme.colors.darkPurple};
+    cursor: pointer;
+`
+
+const RequiredText = styled.p`
+    font-size: 0.9rem;
+    margin-top: 1px;
+    color: #bf1650;
+
+     &::before {
+        content: "⚠ ";
+        display: inline;
+     }
 `;

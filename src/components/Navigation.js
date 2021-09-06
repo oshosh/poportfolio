@@ -26,14 +26,17 @@ function Navigation(props) {
     })
   };
 
+  const eventAction = useCallback((action) => {
+    let componentsRef = [menuBtnRef.current, navMenuRef.current, menuCloseBtnRef.current, document.body];
+
+    componentsRef.forEach((comp) => comp.classList[`${action}`]('active'));
+  }, [])
+
   const OnMoveNavClick = useCallback((e) => {
     e.preventDefault();
 
     if (menuBtnRef.current.className.includes('active')) {
-      menuBtnRef.current.classList.remove('active')
-      navMenuRef.current.classList.remove('active')
-      menuCloseBtnRef.current.classList.remove('active')
-      document.body.classList.remove('active')
+      eventAction('remove')
     }
 
     switch (e.target.classList.value) {
@@ -50,31 +53,23 @@ function Navigation(props) {
         console.log('default')
         break;
     }
-  }, [aboutMefowardRef, workForwardRef, footerForwardRef]);
+  }, [eventAction, aboutMefowardRef, workForwardRef, footerForwardRef]);
 
   const onMenuBtnClick = useCallback((e) => {
     e.preventDefault();
 
     if (!menuBtnRef.current.className.includes('active')) {
-      menuBtnRef.current.classList.add('active')
-      menuCloseBtnRef.current.classList.add('active')
-      navMenuRef.current.classList.add('active')
-      navfooterRef.current.classList.add('active')
-      document.body.classList.add('active')
+      eventAction('add')
     }
-  }, [])
+  }, [eventAction])
 
   const onMenuCloseBtnClick = useCallback((e) => {
     e.preventDefault();
 
     if (menuBtnRef.current.className.includes('active')) {
-      menuBtnRef.current.classList.remove('active')
-      navMenuRef.current.classList.remove('active')
-      menuCloseBtnRef.current.classList.remove('active')
-      navfooterRef.current.classList.remove('active')
-      document.body.classList.remove('active')
+      eventAction('remove')
     }
-  }, [])
+  }, [eventAction])
 
   return (
     <div style={{ position: "relative", height: "100%", width: "100%" }}>

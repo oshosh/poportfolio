@@ -11,3 +11,13 @@ export const mainKeywordArray = [
     '문서화를 좋아하는',
 ];
 
+export const postCodeStyle = {
+    display: "block",
+    position: "absolute",
+    // top: "50%",
+    top: "-200%",
+    left: "-10%",
+    width: "400px",
+    height: "500px",
+    padding: "7px",
+};
