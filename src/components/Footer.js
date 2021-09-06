@@ -1,7 +1,7 @@
 import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message'
 import styled from 'styled-components';
 import dotenv from "dotenv";
@@ -9,6 +9,8 @@ import emailjs from 'emailjs-com';
 import DaumPostcode from 'react-daum-postcode';
 import Modal from './Modoal';
 
+//https://stackoverflow.com/questions/62040275/how-can-i-access-a-state-hook-value-from-a-callback-passed-to-a-listener
+// 나중에 리사이징 참고
 const postCodeStyle = {
     display: "block",
     position: "absolute",
@@ -26,13 +28,14 @@ function Footer({ forwardRef3 }) {
     const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
     const USER_ID = process.env.REACT_APP_USER_ID;
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors }, setValue, control } = useForm();
 
     const [isAddress, setIsAddress] = useState("");
     const [isZoneCode, setIsZoneCode] = useState();
     const [isPostOpen, setIsPostOpen] = useState(false)
 
     const [modalVisible, setModalVisible] = useState(false)
+    const addressControlRef = useRef()
 
     const onSubmitSend = useCallback((e) => {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, watch(), USER_ID)
@@ -83,10 +86,13 @@ function Footer({ forwardRef3 }) {
         setIsZoneCode(data.zonecode);
         setIsAddress(fullAddress);
 
+        //제어 컴포넌트
+        setValue("address", addressControlRef.current.value)
+
         //입력 후 모달 닫기
         closeModal()
         setIsPostOpen(false);
-    }, [closeModal]);
+    }, [closeModal, setValue]);
 
     return (
         <>
@@ -125,18 +131,32 @@ function Footer({ forwardRef3 }) {
 
                             <fieldset className="form-group">
                                 <label>Adress :</label>
-                                <input
-                                    type='address'
-                                    name='address'
-                                    value={isAddress}
-                                    onClick={onInputClick}
-                                    {...register("address", { required: "필수 입력 사항입니다.", maxLength: 50 })}
-                                    placeholder="주소를 입력해주세요."
+                                <Controller
+                                    control={control}
+                                    name="address"
+                                    render={({ onChange, onBlur, value }) => (
+                                        <input
+                                            name="address"
+                                            onClick={onInputClick}
+                                            ref={addressControlRef}
+                                            value={isAddress}
+                                            onChange={e => {
+                                                setValue("address", isAddress)
+                                            }}
+                                            placeholder="주소를 입력해주세요."
+
+                                        />
+                                    )}
+                                    {...register("address", { required: "필수 입력 사항입니다." })}
                                 />
                                 <ErrorMessage
                                     errors={errors}
                                     name="address"
-                                    render={({ message }) => <RequiredText>{message}</RequiredText>}
+                                    render={({ message }) => {
+                                        return (
+                                            <RequiredText>{message}</RequiredText>
+                                        )
+                                    }}
                                 />
                             </fieldset>
 
