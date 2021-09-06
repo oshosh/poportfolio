@@ -72,7 +72,7 @@ function Navigation(props) {
   }, [eventAction])
 
   return (
-    <div style={{ position: "relative", height: "100%", width: "100%" }}>
+    <>
       <MenuBtn
         ref={menuBtnRef}
         onClick={onMenuBtnClick}
@@ -121,7 +121,7 @@ function Navigation(props) {
           메뉴 닫기 버튼
         </MenuCloseBtn>
       </NavMenu>
-    </div>
+    </>
   );
 }
 Navigation.prototype = {
