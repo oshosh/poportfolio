@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import styled from 'styled-components';
 
 import ReactLoading from 'react-loading';
@@ -19,7 +20,15 @@ function Loader({ type, color, message }) {
             </LoadingWrapper>
         </>
     );
-} export default Loader;
+}
+
+Loader.propTypes = {
+    type: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+}
+
+export default Loader;
 
 const LoaderOverlay = styled.div`
   display: block;

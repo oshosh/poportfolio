@@ -32,7 +32,7 @@ function Navigation(props) {
     componentsRef.forEach((comp) => comp.classList[`${action}`]('active'));
   }, [])
 
-  const OnMoveNavClick = useCallback((e) => {
+  const onMoveNavClick = useCallback((e) => {
     e.preventDefault();
 
     if (menuBtnRef.current.className.includes('active')) {
@@ -85,7 +85,7 @@ function Navigation(props) {
             <a
               href="#about-me"
               className="menu-link about"
-              onClick={OnMoveNavClick} >
+              onClick={onMoveNavClick} >
               about me
             </a>
           </li>
@@ -93,7 +93,7 @@ function Navigation(props) {
             <a
               href="#works"
               className="menu-link works"
-              onClick={OnMoveNavClick}
+              onClick={onMoveNavClick}
             >works
             </a>
           </li>
@@ -101,7 +101,7 @@ function Navigation(props) {
             <a
               href="#footer"
               className="menu-link footer"
-              onClick={OnMoveNavClick}
+              onClick={onMoveNavClick}
             >contact me
             </a>
           </li>

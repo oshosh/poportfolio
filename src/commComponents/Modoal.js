@@ -3,14 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 // import CloseButton from './CloseButton'
 
-function Modal({
-    className,
-    onClose,
-    maskClosable,
-    closable,
-    visible,
-    children,
-}) {
+function Modal({ className, onClose, maskClosable, closable, visible, children, }) {
 
     const onMaskClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -45,6 +38,8 @@ Modal.propTypes = {
     visible: PropTypes.bool,
 }
 
+export default Modal
+
 const ModalWrapper = styled.div`
   display: ${(props) => (props.visible ? 'block' : 'none')};
   ${({ theme }) => theme.common.Overlay};
@@ -78,5 +73,3 @@ const ModalInner = styled.div`
   margin: 0 auto;
   padding: 40px 20px;
 `
-
-export default Modal
