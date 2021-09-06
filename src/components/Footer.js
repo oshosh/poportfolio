@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback } from 'react';
+import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { useForm } from 'react-hook-form';
@@ -6,15 +6,33 @@ import { ErrorMessage } from '@hookform/error-message'
 import styled from 'styled-components';
 import dotenv from "dotenv";
 import emailjs from 'emailjs-com';
+import DaumPostcode from 'react-daum-postcode';
+import Modal from './Modoal';
 
+const postCodeStyle = {
+    display: "block",
+    position: "absolute",
+    // top: "50%",
+    top: "-200%",
+    left: "-10%",
+    width: "400px",
+    height: "500px",
+    padding: "7px",
+};
 
 dotenv.config();
 function Footer({ forwardRef3 }) {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
     const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
     const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
     const USER_ID = process.env.REACT_APP_USER_ID;
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const [isAddress, setIsAddress] = useState("");
+    const [isZoneCode, setIsZoneCode] = useState();
+    const [isPostOpen, setIsPostOpen] = useState(false)
+
+    const [modalVisible, setModalVisible] = useState(false)
 
     const onSubmitSend = useCallback((e) => {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, watch(), USER_ID)
@@ -28,61 +46,152 @@ function Footer({ forwardRef3 }) {
             });
     }, [SERVICE_ID, TEMPLATE_ID, USER_ID, watch])
 
+    const openModal = useCallback((e) => {
+        setModalVisible(true)
+    }, [])
+
+    const closeModal = useCallback((e) => {
+        setModalVisible(false)
+    }, [])
+
+    const onInputClick = useCallback((e) => {
+        switch (e.target.name) {
+            case 'address':
+                openModal()
+                setIsPostOpen(true)
+                break;
+            default:
+                break;
+        }
+    }, [openModal])
+
+    // 다음 API 이벤트
+    const handleComplete = useCallback((data) => {
+        let fullAddress = data.address;
+        let extraAddress = "";
+
+        if (data.addressType === "R") {
+            if (data.bname !== "") {
+                extraAddress += data.bname;
+            }
+            if (data.buildingName !== "") {
+                extraAddress +=
+                    extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+            }
+            fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+        }
+        setIsZoneCode(data.zonecode);
+        setIsAddress(fullAddress);
+
+        //입력 후 모달 닫기
+        closeModal()
+        setIsPostOpen(false);
+    }, [closeModal]);
+
     return (
-        <FooterWrapper id='footer' ref={forwardRef3}>
-            <FooterTop>
-                <h2><span>CONTACT ME</span></h2>
-                <form onSubmit={handleSubmit(onSubmitSend)}>
-                    <FormWrapper className="form-wrap">
-                        <fieldset className="form-group">
-                            <label>Name:</label>
-                            <input
-                                type='text'
-                                name='name'
-                                {...register("name", { required: "필수 입력 사항입니다.", maxLength: 50 })}
-                                placeholder="이름 / 회사명을 입력해주세요."
-                            />
-                            <ErrorMessage
-                                errors={errors}
-                                name="name"
-                                render={({ message }) => <RequiredText>{message}</RequiredText>}
-                            />
-                        </fieldset>
+        <>
+            <FooterWrapper id='footer' ref={forwardRef3}>
+                <FooterTop>
+                    <h2><span><b>CONTACT</b> ME</span></h2>
+                    <form onSubmit={handleSubmit(onSubmitSend)}>
+                        <FormWrapper className="form-wrap">
+                            <fieldset className="form-group">
+                                <label>Name :</label>
+                                <input
+                                    type='text'
+                                    name='name'
+                                    {...register("name", { required: "필수 입력 사항입니다.", maxLength: 50 })}
+                                    placeholder="이름 / 회사명을 입력해주세요."
+                                />
+                                <ErrorMessage
+                                    errors={errors}
+                                    name="name"
+                                    render={({ message }) => <RequiredText>{message}</RequiredText>}
+                                />
+                            </fieldset>
 
-                        <fieldset className="form-group">
-                            <label htmlFor="email"><em>Your</em> Email Address:</label>
-                            <input
-                                id="email"
-                                className="email"
-                                name="email"
-                                type="email"
-                                {...register("email", { required: true, maxLength: 50 })}
-                                placeholder="이메일을 입력해주세요."
-                            />
-                            <span className="email-warning"
-                            >* 이메일 형식에 맞게 입력해주세요.</span
-                            >
-                        </fieldset>
+                            <fieldset className="form-group">
+                                <label htmlFor="email"><em>Your</em> Email Address :</label>
+                                <input
+                                    id="email"
+                                    className="email"
+                                    name="email"
+                                    type="email"
+                                    {...register("email", { required: true, maxLength: 50 })}
+                                    placeholder="이메일을 입력해주세요."
+                                />
+                                <span className="email-warning">* 이메일 형식에 맞게 입력해주세요.</span>
+                            </fieldset>
 
-                        <fieldset className="form-group">
-                            <label htmlFor="message">Message: </label>
-                            <textarea
-                                id="message"
-                                className="message"
-                                name="message"
-                                rows="10"
-                                placeholder="메세지를 입력해주세요."
-                                {...register("message", { required: true })}
-                            ></textarea>
-                        </fieldset>
-                        <SubmitButton className='submit-btn'>SEND MESSAGE</SubmitButton>
-                    </FormWrapper>
-                </form>
-            </FooterTop>
-            <FooterBottom>
-                <small>&copy; 2021 by OH SEHYUN. All rights reserved.</small>
-            </FooterBottom>
-        </FooterWrapper>
+                            <fieldset className="form-group">
+                                <label>Adress :</label>
+                                <input
+                                    type='address'
+                                    name='address'
+                                    value={isAddress}
+                                    onClick={onInputClick}
+                                    {...register("address", { required: "필수 입력 사항입니다.", maxLength: 50 })}
+                                    placeholder="주소를 입력해주세요."
+                                />
+                                <ErrorMessage
+                                    errors={errors}
+                                    name="address"
+                                    render={({ message }) => <RequiredText>{message}</RequiredText>}
+                                />
+                            </fieldset>
+
+                            <fieldset className="form-group">
+                                <label htmlFor="email">Detail Address :</label>
+                                <input
+                                    id="detail"
+                                    className="detail"
+                                    name="detail"
+                                    type="detail"
+                                    {...register("detail", { required: true, maxLength: 50 })}
+                                    placeholder="상세 주소를 입력해주세요."
+                                />
+
+                            </fieldset>
+
+                            <fieldset className="form-group">
+                                <label htmlFor="message">Message: </label>
+                                <textarea
+                                    id="message"
+                                    className="message"
+                                    name="message"
+                                    rows="10"
+                                    placeholder="메세지를 입력해주세요."
+                                    {...register("message", { required: true })}
+                                ></textarea>
+                            </fieldset>
+                            <SubmitButton className='submit-btn'>SEND MESSAGE</SubmitButton>
+                        </FormWrapper>
+                    </form>
+                </FooterTop>
+                <FooterBottom>
+                    <small>&copy; 2021 by OH SEHYUN. All rights reserved.</small>
+                </FooterBottom>
+            </FooterWrapper>
+
+
+            {
+                modalVisible && <Modal
+                    visible={modalVisible}
+                    closable={true}
+                    maskClosable={true}
+                    onClose={closeModal}>
+                    {
+                        isPostOpen
+                            ? (
+                                <DaumPostcode
+                                    style={postCodeStyle}
+                                    onComplete={handleComplete}
+                                />
+                            ) : null
+                    }
+                </Modal>
+            }
+        </>
     );
 }
 Footer.prototype = {
@@ -190,7 +299,7 @@ const FormWrapper = styled.div`
             color: #fff69d;
         }
 
-        &:nth-child(3){
+        &:nth-child(5){
             width: 100%;
             
             & textarea{
@@ -205,11 +314,15 @@ const FormWrapper = styled.div`
             }
         }
     }
+
+    @media ${({ theme }) => theme.device.mobile} {
+        width: 85%;
+    }
 `
 const FooterBottom = styled.div`
     color: #bebebe;
     text-align: center;
-    margin-top: 35px;
+    margin-top: 100px;
     padding-bottom: 50px;
     line-height: 1.3;
 
