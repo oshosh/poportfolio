@@ -251,7 +251,7 @@ const NavMenu = styled.nav`
       text-indent: 0;
       
       text-decoration: none;
-      color: #555555;
+      color: ${({ theme }) => theme.colors.gray};
     }
 
     & .about,

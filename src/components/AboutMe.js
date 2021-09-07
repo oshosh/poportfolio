@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-
+import { mainKeywordArray } from '../util/commFunction'
 function AboutMe({ forwardRef1 }) {
     return (
         <Section id='about-me' ref={forwardRef1}>
@@ -14,7 +14,7 @@ function AboutMe({ forwardRef1 }) {
                     <p className="introduce-title">안녕하세요 :D</p>
 
                     <p>
-                        '깊이 생각하는', '끈기있게 탐구하는', '문서화를 좋아하는'<br />
+                        {mainKeywordArray.join(', ')} <br />
                         프론트엔드 개발자 오세현입니다
                     </p>
 
@@ -53,6 +53,9 @@ function AboutMe({ forwardRef1 }) {
                 <SkillWraper className='skill-text-wrap' >
                     <SkillText>
                         <strong>Markup</strong>
+                        {/* <p>
+                            
+                        </p> */}
                         <p>스킬스킬스킬스킬스킬</p>
                     </SkillText>
                     <SkillText>
@@ -115,7 +118,6 @@ const Section = styled.section`
             ${({ theme }) => theme.common.InlineBlockSpanUnderLine};
         }
     }
-
 `
 const TextWrapper = styled.div`
     display: flex;
@@ -127,10 +129,7 @@ const TextWrapper = styled.div`
     line-height: 1.6;
 
     & p:first-child {
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 1.6rem;
-        font-weight: 700;
-        color: ${({ theme }) => theme.colors.darkPurple};
+        ${({ theme }) => theme.common.AboutTitle};
         
         &::before{
             content: '';
@@ -167,7 +166,25 @@ const TextWrapper = styled.div`
 
     & > p:nth-child(3){
         margin-top: 50px;
-        color: #555555;
+        color: ${({ theme }) => theme.colors.gray};
+    }
+
+    @media ${({ theme }) => theme.device.mobile} {
+        & {
+            flex-basis: 100%;
+        }
+
+        & p:first-child {
+            font-size: 1.5rem;
+        }
+
+        & > p:nth-child(2){
+            font-size: 1rem;
+        }
+
+        & > p:nth-child(3){
+            font-size: 0.83rem;
+        }
     }
 `
 
@@ -177,10 +194,36 @@ const SkillWraper = styled.div`
     flex-basis: 55%;
     padding: 10px;
     box-sizing: border-box;
+    
+
+    @media ${({ theme }) => theme.device.mobile} {
+        & {
+            flex-basis: 100%;
+        }
+    }
 `
 const SkillText = styled.div`
     width: 50%;
     box-sizing: border-box;
+    padding: 0 10px;
+
+    & strong {
+        display: inline-block;
+        ${({ theme }) => theme.common.AboutTitle};
+    }
+
+    & p {
+        margin-top: 10px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: ${({ theme }) => theme.colors.gray};
+    }
+
+    @media ${({ theme }) => theme.device.mobile} {
+        & p {
+            font-size: 0.8rem;
+        }
+    }
 `
 // http://jsfiddle.net/xwmWK/
 // hover before transition
@@ -228,4 +271,18 @@ const IntroduceLinkWrapper = styled.div`
             margin-left: 5px;
         }
      }
+
+     @media ${({ theme }) => theme.device.mobile} {
+        & {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        & a {
+            width: 50%;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    }
 `;

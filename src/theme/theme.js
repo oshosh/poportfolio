@@ -21,6 +21,7 @@ const colors = {
     titleColor: "#1d1720",
     purple: "#a2a1dc",
     darkPurple: "#514862",
+    gray: "#555555",
 };
 
 const common = {
@@ -38,6 +39,12 @@ const common = {
         right: 0;
         bottom: 0;
         left: 0;
+    `,
+    AboutTitle: `
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: ${colors.darkPurple};
     `
 };
 
