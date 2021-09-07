@@ -335,6 +335,34 @@ const SlideWrapper = styled.div`
             content: '🚧 ';
         }
     }
+
+    @media ${({ theme }) => theme.device.mobile} {
+        & .slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: -100px;
+        }
+
+        & .work-image-wrap {
+            width: 70%;
+            min-width: 150px;
+            text-align: center;
+
+            & figure {
+                width: 200px;
+                margin: 0 auto;
+            }
+
+            & p {
+                font-size: 0.9rem;
+            }
+            & p.topic {
+                font-size: 0.85rem;
+            }
+        }
+    }
 `
 
 const LinkWrapper = styled.div`
@@ -385,18 +413,39 @@ const WorkTextWrapper = styled.div`
             list-style: none;
         }
     }
+    @media ${({ theme }) => theme.device.mobile} {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 15px;
+    }
 `;
 
 const WorkText = styled.div`
+    margin-top: 5px;
     margin: 0 10px;
     /* background: yellowgreen; */
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    box-sizing: border-box;
 
-    & .w50p{
-        display: flex;
-        flex-direction: column;
-        margin-top: 5px;
-        box-sizing: border-box;
+    @media ${({ theme }) => theme.device.mobile} {
+        margin: 0 15px;
+
+        & .paragraph {
+            & strong {
+                font-size: 1.3rem;
+            }
+
+            & ul {
+                font-size: 0.9rem;
+            }
+
+            & p {
+                font-size: 0.8rem;
+            }
+        }
     }
 `
 
