@@ -346,6 +346,9 @@ const SlideWrapper = styled.div`
         }
 
         & .work-image-wrap {
+            position: relative;
+            left: -15px;
+            
             width: 70%;
             min-width: 150px;
             text-align: center;
