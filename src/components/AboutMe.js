@@ -229,7 +229,7 @@ const SkillText = styled.div`
 
     & p {
         margin-top: 10px;
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1.6;
         color: ${({ theme }) => theme.colors.gray};
     }

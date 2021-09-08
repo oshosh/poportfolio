@@ -35,7 +35,7 @@ function Navigation(props) {
   const onMoveNavClick = useCallback((e) => {
     e.preventDefault();
 
-    if (menuBtnRef.current.className.includes('active')) {
+    if (menuBtnRef.current.className.indexOf('active') !== -1) {
       eventAction('remove')
     }
 
@@ -58,7 +58,7 @@ function Navigation(props) {
   const onMenuBtnClick = useCallback((e) => {
     e.preventDefault();
 
-    if (!menuBtnRef.current.className.includes('active')) {
+    if (!menuBtnRef.current.className.indexOf('active') !== -1) {
       eventAction('add')
     }
   }, [eventAction])
@@ -66,7 +66,7 @@ function Navigation(props) {
   const onMenuCloseBtnClick = useCallback((e) => {
     e.preventDefault();
 
-    if (menuBtnRef.current.className.includes('active')) {
+    if (menuBtnRef.current.className.indexOf('active') !== -1) {
       eventAction('remove')
     }
   }, [eventAction])
