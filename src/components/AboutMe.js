@@ -53,30 +53,45 @@ function AboutMe({ forwardRef1 }) {
                 <SkillWraper className='skill-text-wrap' >
                     <SkillText>
                         <strong>Markup</strong>
-                        {/* <p>
-                            
-                        </p> */}
-                        <p>스킬스킬스킬스킬스킬</p>
+                        <p>
+                            웹 표준과 웹 접근성을 지향합니다. <br />
+                            시멘틱 태그를 활용하여 용도 명확하게 전달 할 수 있도록 구성합니다.
+                        </p>
                     </SkillText>
                     <SkillText>
-                        <strong>Markup</strong>
-                        <p>스킬스킬스킬스킬스킬</p>
+                        <strong>CSS</strong>
+                        <p>
+                            오픈소스를 활용한 디자인 컴포넌트 사용 혹은 CSS in JS (Styled-Components) 사용하여 구애 받지 않는 스타일링 구현이 가능합니다.
+                        </p>
                     </SkillText>
                     <SkillText>
-                        <strong>Markup</strong>
-                        <p>스킬스킬스킬스킬스킬</p>
+                        <strong>JavaScript</strong>
+                        <p>
+                            코딩 컨벤션을 준수하고 ES6을 활용하여 유연한 데이터 처리 및 관리가 가능합니다. <br />
+                            또한 HOC + Class Component 기반의 React 실무 프로젝트 경험이 있습니다.<br />
+                            Hook 또한 경험이 있으며 최근 SSR의 접근성을 고려하여 Next.JS를 공부하고 있습니다.
+                        </p>
                     </SkillText>
                     <SkillText>
-                        <strong>Markup</strong>
-                        <p>스킬스킬스킬스킬스킬</p>
+                        <strong>Server</strong>
+                        <p>
+                            Node Express, Django, C# WCF에서 실무 경험을 기반으로하여 Restful API한 환경을 이해하고 있습니다.<br />
+                            번복적 수정을 최대한 줄여 작업 요구 사항을 같이 제시하여 Backend와의 적극적인 소통을 도모하겠습니다.<br />
+                        </p>
                     </SkillText>
                     <SkillText>
-                        <strong>Markup</strong>
-                        <p>스킬스킬스킬스킬스킬</p>
+                        <strong>DevOps</strong>
+                        <p>
+                            Production 배포를 돌아가면서 담당한 경험이 있습니다.
+                            GitLab, SourceTree ,Jenkins를 활용하여 프로젝트를 배포를 하였습니다. <br />
+                            실수가 발생하지 않도록 최대한 긴장을 늦추지 않고 있습니다.
+                        </p>
                     </SkillText>
                     <SkillText>
-                        <strong>Markup</strong>
-                        <p>스킬스킬스킬스킬스킬</p>
+                        <strong>ETC</strong>
+                        <p>
+                            Confluence WIKI를 통하여 공통 로직 및 공통 컴포넌트에 대한 문서를 정의하여 공유하고 의견을 취합하여 반영 할 수 있는 문서 작성 능력을 갖추고 있습니다.
+                        </p>
                     </SkillText>
                 </SkillWraper>
             </div>
