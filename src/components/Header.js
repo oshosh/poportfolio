@@ -11,7 +11,7 @@ function Header(props) {
   const mainKeyWord = useRef();
   const ImgBackGroundRef = useRef();
 
-  const [keyword, setKeyword] = useState('')
+  // const [keyword, setKeyword] = useState('')
 
   let [startX, setStartX] = useState(0);
   let [startY, setStartY] = useState(0);
@@ -64,9 +64,9 @@ function Header(props) {
       // 글자 노출
       await delayletter();
 
-      // mainKeyWord.current.append(textSplit[loopCount][count]);
+      mainKeyWord.current.append(textSplit[loopCount][count]);
 
-      setKeyword((prevState) => prevState.concat(textSplit[loopCount][count]))
+      // setKeyword((prevState) => prevState.concat(textSplit[loopCount][count]))
 
       // 끝나면 초기화
       if (count === textSplit[loopCount].length - 1) {
@@ -76,8 +76,8 @@ function Header(props) {
           ? keywordAnimation((loopCount = 0))
           : keywordAnimation(loopCount + 1);
 
-        setKeyword('')
-        // mainKeyWord.current.textContent = '';
+        // setKeyword('')
+        mainKeyWord.current.textContent = '';
         return false;
       }
       count++;
@@ -106,7 +106,8 @@ function Header(props) {
             {mainKeywordArray}
           </SpanMainKeyWord>
 
-          <SpanMainKeyWord ref={mainKeyWord}>{keyword}</SpanMainKeyWord><br />
+          {/* <SpanMainKeyWord ref={mainKeyWord}>{keyword}</SpanMainKeyWord><br /> */}
+          <SpanMainKeyWord ref={mainKeyWord}></SpanMainKeyWord><br />
           프론트엔드 개발자 오세현입니다 :D
         </h1>
         <Navigation {...props} />
