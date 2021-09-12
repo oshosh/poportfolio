@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/poportfolio/static/js/main.451638a8.chunk.js",
-    "main.js.map": "/poportfolio/static/js/main.451638a8.chunk.js.map",
+    "main.js": "/poportfolio/static/js/main.b18ce6cd.chunk.js",
+    "main.js.map": "/poportfolio/static/js/main.b18ce6cd.chunk.js.map",
     "runtime-main.js": "/poportfolio/static/js/runtime-main.b96309ea.js",
     "runtime-main.js.map": "/poportfolio/static/js/runtime-main.b96309ea.js.map",
-    "static/js/2.43bd2377.chunk.js": "/poportfolio/static/js/2.43bd2377.chunk.js",
-    "static/js/2.43bd2377.chunk.js.map": "/poportfolio/static/js/2.43bd2377.chunk.js.map",
+    "static/js/2.24650f07.chunk.js": "/poportfolio/static/js/2.24650f07.chunk.js",
+    "static/js/2.24650f07.chunk.js.map": "/poportfolio/static/js/2.24650f07.chunk.js.map",
     "index.html": "/poportfolio/index.html",
-    "static/js/2.43bd2377.chunk.js.LICENSE.txt": "/poportfolio/static/js/2.43bd2377.chunk.js.LICENSE.txt",
+    "static/js/2.24650f07.chunk.js.LICENSE.txt": "/poportfolio/static/js/2.24650f07.chunk.js.LICENSE.txt",
     "static/media/chat_w.9a4fea75.png": "/poportfolio/static/media/chat_w.9a4fea75.png",
     "static/media/lilac-bg.f9356c39.jpg": "/poportfolio/static/media/lilac-bg.f9356c39.jpg",
     "static/media/mail_w.85012c91.png": "/poportfolio/static/media/mail_w.85012c91.png",
@@ -16,7 +16,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b96309ea.js",
-    "static/js/2.43bd2377.chunk.js",
-    "static/js/main.451638a8.chunk.js"
+    "static/js/2.24650f07.chunk.js",
+    "static/js/main.b18ce6cd.chunk.js"
   ]
 }
