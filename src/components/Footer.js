@@ -10,8 +10,10 @@ import emailjs from 'emailjs-com';
 import DaumPostcode from 'react-daum-postcode';
 
 import { postCodeStyle } from '../util/commFunction';
-import Modal from '../commComponents/Modoal';
-import Loader from '../commComponents/Loader';
+
+import Portal from './comm/Portal'
+import Modal from './comm/Modoal';
+import Loader from './comm/Loader';
 
 //https://stackoverflow.com/questions/62040275/how-can-i-access-a-state-hook-value-from-a-callback-passed-to-a-listener
 // 나중에 리사이징 참고
@@ -192,25 +194,41 @@ function Footer({ forwardRef3 }) {
             </FooterWrapper>
 
             {
-                modalVisible && <Modal
-                    visible={modalVisible}
-                    closable={true}
-                    maskClosable={true}
-                    onClose={closeModal}>
-                    {
-                        isPostOpen
-                            ? (
-                                <DaumPostcode
-                                    style={postCodeStyle}
-                                    onComplete={handleComplete}
-                                />
-                            ) : null
-                    }
-                </Modal>
+                modalVisible &&
+                (
+                    <>
+                        <Portal
+                            elementId={'#daumAddressModal'}
+                        >
+                            <Modal
+                                visible={modalVisible}
+                                closable={true}
+                                maskClosable={true}
+                                onClose={closeModal}>
+                                {
+                                    isPostOpen
+                                        ? (
+                                            <DaumPostcode
+                                                style={postCodeStyle}
+                                                onComplete={handleComplete}
+                                            />
+                                        ) : null
+                                }
+                            </Modal>
+                        </Portal>
+                    </>
+                )
             }
 
             {
-                loading && <Loader type="spokes" color="black" message={'데이터 처리중 입니다.'} />
+                loading &&
+                <>
+                    <Portal
+                        elementId={'#loading'}
+                    >
+                        <Loader type="spokes" color="black" message={'데이터 처리중 입니다.'} />
+                    </Portal>
+                </>
             }
         </>
     );

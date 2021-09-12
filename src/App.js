@@ -5,7 +5,7 @@ import AboutMe from './components/AboutMe';
 import Works from './components/Works';
 import Footer from './components/Footer';
 
-import GlobalStyle from './components/GlobalStyle';
+import GlobalStyle from './theme/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import theme from './theme/theme';
 

@@ -4,7 +4,7 @@ import { delayletter, delayWord, mainKeywordArray } from '../util/commFunction';
 import styled, { css } from 'styled-components';
 
 import Myimg from '../images/lilac-bg.jpg'
-import GlobalStyle from './GlobalStyle';
+import GlobalStyle from '../theme/GlobalStyle';
 import Navigation from './Navigation';
 
 function Header(props) {
