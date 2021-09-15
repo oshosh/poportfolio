@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -8,10 +8,12 @@ import FooterImg from '../images/mail_w.png'
 import OpenBtn from '../images/toggle-btn.svg'
 import CloseBtn from '../images/close_button.png'
 import GithubLogo from '../images/github.png'
+import { Link } from 'react-scroll';
 
 
 function Navigation(props) {
-  const { aboutMefowardRef, workForwardRef, footerForwardRef } = props;
+  // const { aboutMefowardRef, workForwardRef, footerForwardRef } = props;
+  const { workForwardRef, footerForwardRef } = props;
 
   const navMenuRef = useRef()
   const menuBtnRef = useRef()
@@ -27,6 +29,7 @@ function Navigation(props) {
   };
 
   const eventAction = useCallback((action) => {
+
     let componentsRef = [menuBtnRef.current, navMenuRef.current, menuCloseBtnRef.current, document.body];
 
     componentsRef.forEach((comp) => comp.classList[`${action}`]('active'));
@@ -40,9 +43,9 @@ function Navigation(props) {
     }
 
     switch (e.target.classList.value) {
-      case 'menu-link about':
-        smoothScroll(aboutMefowardRef)
-        break;
+      // case 'menu-link about':
+      //   smoothScroll(aboutMefowardRef)
+      //   break;
       case 'menu-link works':
         smoothScroll(workForwardRef)
         break;
@@ -53,7 +56,8 @@ function Navigation(props) {
         console.log('default')
         break;
     }
-  }, [eventAction, aboutMefowardRef, workForwardRef, footerForwardRef]);
+  }, [eventAction, workForwardRef, footerForwardRef]);
+  // }, [eventAction, aboutMefowardRef, workForwardRef, footerForwardRef]);
 
   const onMenuBtnClick = useCallback((e) => {
     e.preventDefault();
@@ -71,6 +75,8 @@ function Navigation(props) {
     }
   }, [eventAction])
 
+  const scrollMoveEvent = useMemo(() => () => eventAction('remove'), [eventAction])
+
   return (
     <>
       <MenuBtn
@@ -82,12 +88,21 @@ function Navigation(props) {
       <NavMenu className="menu-wrap" ref={navMenuRef}>
         <ul>
           <li>
-            <a
+            <Link
+              className="menu-link about"
+              to="about-me"
+              spy={true}
+              smooth={true}
+              onClick={scrollMoveEvent}
+            >
+              about me
+            </Link>
+            {/* <a
               href="#about-me"
               className="menu-link about"
               onClick={onMoveNavClick} >
               about me
-            </a>
+            </a> */}
           </li>
           <li>
             <a
@@ -198,6 +213,7 @@ const NavMenu = styled.nav`
   & .about {
     background: url(${AboutMeImg}) center no-repeat; 
     background-size: 55%;
+    cursor: pointer;
   }
 
   & .works {
