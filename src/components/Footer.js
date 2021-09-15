@@ -3,22 +3,21 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Controller, useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message'
+import { ErrorMessage } from '@hookform/error-message';
 
 import dotenv from "dotenv";
 import emailjs from 'emailjs-com';
 import DaumPostcode from 'react-daum-postcode';
 
-import { postCodeStyle } from '../util/commFunction';
+import { postCodeStyle } from '../util/lib/commFunction';
 
 import Portal from './comm/Portal'
 import Modal from './comm/Modoal';
 import Loader from './comm/Loader';
 
-//https://stackoverflow.com/questions/62040275/how-can-i-access-a-state-hook-value-from-a-callback-passed-to-a-listener
-// 나중에 리사이징 참고
+
 dotenv.config();
-function Footer({ forwardRef3 }) {
+function Footer({ footerForwardRef }) {
     const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
     const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
     const USER_ID = process.env.REACT_APP_USER_ID;
@@ -26,7 +25,6 @@ function Footer({ forwardRef3 }) {
     const { register, handleSubmit, watch, formState: { errors }, setValue, control } = useForm();
 
     const [isAddress, setIsAddress] = useState("");
-    const [isZoneCode, setIsZoneCode] = useState();
     const [isPostOpen, setIsPostOpen] = useState(false)
 
     const [modalVisible, setModalVisible] = useState(false)
@@ -34,7 +32,7 @@ function Footer({ forwardRef3 }) {
 
     const addressControlRef = useRef()
 
-    const onSubmitSend = useCallback((e) => {
+    const handleFormSubmit = useCallback((e) => {
         setLoading(true)
         emailjs.send(SERVICE_ID, TEMPLATE_ID, watch(), USER_ID)
             .then((result) => {
@@ -63,8 +61,8 @@ function Footer({ forwardRef3 }) {
         }
     }, [openModal])
 
-    const onInputClick = useCallback((e) => eventAction(e, 'onInputClick'), [eventAction])
-    const onInputFocus = useCallback((e) => eventAction(e, 'onInputFocus'), [eventAction])
+    const handleAddressClick = useCallback((e) => eventAction(e, 'handleAddressClick'), [eventAction])
+    const handleAddressFocus = useCallback((e) => eventAction(e, 'handleAddressFocus'), [eventAction])
 
     // 다음 API 이벤트
     const handleComplete = useCallback((data) => {
@@ -81,7 +79,6 @@ function Footer({ forwardRef3 }) {
             }
             fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
         }
-        setIsZoneCode(data.zonecode);
         setIsAddress(fullAddress);
 
         //제어 컴포넌트
@@ -94,10 +91,10 @@ function Footer({ forwardRef3 }) {
 
     return (
         <>
-            <FooterWrapper id='footer' ref={forwardRef3}>
+            <FooterWrapper id='footer' ref={footerForwardRef}>
                 <FooterTop>
                     <h2><span><b>CONTACT</b> ME</span></h2>
-                    <form onSubmit={handleSubmit(onSubmitSend)}>
+                    <form onSubmit={handleSubmit(handleFormSubmit)}>
                         <FormWrapper className="form-wrap">
                             <fieldset className="form-group">
                                 <label>Name :</label>
@@ -135,16 +132,14 @@ function Footer({ forwardRef3 }) {
                                     render={({ onChange, onBlur, value }) => (
                                         <input
                                             name="address"
-                                            onClick={onInputClick}
-                                            onFocus={onInputFocus}
-                                            // onFocus
+                                            onClick={handleAddressClick}
+                                            onFocus={handleAddressFocus}
                                             ref={addressControlRef}
                                             value={isAddress}
                                             onChange={e => {
                                                 setValue("address", isAddress)
                                             }}
                                             placeholder="주소를 입력해주세요."
-
                                         />
                                     )}
                                     {...register("address", { required: "필수 입력 사항입니다." })}
@@ -234,7 +229,7 @@ function Footer({ forwardRef3 }) {
     );
 }
 Footer.prototype = {
-    forwardRef3: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+    footerForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
 };
 
 export default forwardRef(Footer);

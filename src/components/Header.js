@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { delayletter, delayWord, mainKeywordArray } from '../util/commFunction';
+import { delayletter, delayWord, mainKeywordArray } from '../util/lib/commFunction';
 
 import styled, { css } from 'styled-components';
 

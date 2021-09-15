@@ -2,22 +2,21 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { mainKeywordArray } from '../util/commFunction'
-function AboutMe({ forwardRef1 }) {
+import { mainKeywordArray } from '../util/lib/commFunction'
+function AboutMe({ aboutForwardRef }) {
+
     return (
-        <Section id='about-me' ref={forwardRef1}>
+        <Section id='about-me' ref={aboutForwardRef}>
             <div className='wrap-1200 common-group'>
                 <h2>
                     <span><b>ABOUT</b> ME</span>
                 </h2>
-                <TextWrapper className='introduce-text-wrap'>
+                <IntroduceWrapper className='introduce-text-wrap'>
                     <p className="introduce-title">안녕하세요 :D</p>
-
                     <p>
                         {mainKeywordArray.join(', ')} <br />
                         프론트엔드 개발자 오세현입니다
                     </p>
-
                     <p>
                         저는 프론트엔드 개발자로 현업 경험이 있습니다.<br />
                         각 포지션에 있어서 업무 시, UI 개발에 대한 궁금증,<br />
@@ -31,8 +30,7 @@ function AboutMe({ forwardRef1 }) {
                         그러기 위해 구성원으로써 능동적으로 의견을 내고,<br />
                         동료들의 의견을 들어주고 같이 협력할 수 있는 일원이 되길 희망합니다.<br />
                     </p>
-
-                    <IntroduceLinkWrapper>
+                    <LinkWrapper>
                         <a
                             href="https://unique-diadem-604.notion.site/f4391fd3ffb34d0fac61019e12270742"
                             target="_blank"
@@ -47,52 +45,51 @@ function AboutMe({ forwardRef1 }) {
                         >
                             GitHub 바로가기
                         </a>
-                    </IntroduceLinkWrapper>
-                </TextWrapper>
-
+                    </LinkWrapper>
+                </IntroduceWrapper>
                 <SkillWraper className='skill-text-wrap' >
-                    <SkillText>
+                    <SkillItemBox>
                         <strong>Markup</strong>
                         <p>
                             웹 표준과 웹 접근성을 지향합니다. <br />
                             시멘틱 태그를 활용하여 용도 명확하게 전달 할 수 있도록 구성합니다.
                         </p>
-                    </SkillText>
-                    <SkillText>
+                    </SkillItemBox>
+                    <SkillItemBox>
                         <strong>CSS</strong>
                         <p>
                             오픈소스를 활용한 디자인 컴포넌트 사용 혹은 CSS in JS (Styled-Components) 사용하여 구애 받지 않는 스타일링 구현이 가능합니다.
                         </p>
-                    </SkillText>
-                    <SkillText>
+                    </SkillItemBox>
+                    <SkillItemBox>
                         <strong>JavaScript</strong>
                         <p>
                             코딩 컨벤션을 준수하고 ES6을 활용하여 유연한 데이터 처리 및 관리가 가능합니다. <br />
                             또한 HOC + Class Component 기반의 React 실무 프로젝트 경험이 있습니다.<br />
                             Hook 또한 경험이 있으며 최근 SSR의 접근성을 고려하여 Next.JS를 공부하고 있습니다.
                         </p>
-                    </SkillText>
-                    <SkillText>
+                    </SkillItemBox>
+                    <SkillItemBox>
                         <strong>Server</strong>
                         <p>
                             Node Express, Django, C# WCF에서 실무 경험을 기반으로하여 Restful API한 환경을 이해하고 있습니다.<br />
                             번복적 수정을 최대한 줄여 작업 요구 사항을 같이 제시하여 Backend와의 적극적인 소통을 도모하겠습니다.<br />
                         </p>
-                    </SkillText>
-                    <SkillText>
+                    </SkillItemBox>
+                    <SkillItemBox>
                         <strong>DevOps</strong>
                         <p>
                             Production 배포를 돌아가면서 담당한 경험이 있습니다.
                             GitLab, SourceTree ,Jenkins를 활용하여 프로젝트를 배포를 하였습니다. <br />
                             실수가 발생하지 않도록 최대한 긴장을 늦추지 않고 있습니다.
                         </p>
-                    </SkillText>
-                    <SkillText>
+                    </SkillItemBox>
+                    <SkillItemBox>
                         <strong>ETC</strong>
                         <p>
                             Confluence WIKI를 통하여 공통 로직 및 공통 컴포넌트에 대한 문서를 정의하여 공유하고 의견을 취합하여 반영 할 수 있는 문서 작성 능력을 갖추고 있습니다.
                         </p>
-                    </SkillText>
+                    </SkillItemBox>
                 </SkillWraper>
             </div>
         </Section >
@@ -100,7 +97,7 @@ function AboutMe({ forwardRef1 }) {
 }
 
 AboutMe.prototype = {
-    forwardRef1: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+    aboutForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
 };
 
 export default forwardRef(AboutMe);
@@ -134,7 +131,8 @@ const Section = styled.section`
         }
     }
 `
-const TextWrapper = styled.div`
+
+const IntroduceWrapper = styled.div`
     display: flex;
     flex-flow: column wrap;
     flex-basis: 45%;
@@ -217,7 +215,7 @@ const SkillWraper = styled.div`
         }
     }
 `
-const SkillText = styled.div`
+const SkillItemBox = styled.div`
     width: 50%;
     box-sizing: border-box;
     padding: 0 10px;
@@ -242,7 +240,7 @@ const SkillText = styled.div`
 `
 // http://jsfiddle.net/xwmWK/
 // hover before transition
-const IntroduceLinkWrapper = styled.div`
+const LinkWrapper = styled.div`
     margin-top: 50px;
     position: relative;
     

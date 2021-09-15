@@ -5,13 +5,42 @@ import styled from 'styled-components';
 import Portfol01 from '../images/portfolio01_douzon.png';
 
 
-function Works({ forwardRef2 }) {
+function Works({ workForwardRef }) {
+    const sliderWrapRef = useRef(null);
+    const slideIndicatorRef = useRef(null);
+    const SPEED = '0.5s';
 
-    const slide = useRef();
+    let currentSlide = 1;
 
     useEffect(() => {
+        const { slideWrap, slide } = slideClassCopyAll()
+        const slideIndicatorWrap = slideIndicatorRef.current;
 
-        const slideWrap = document.querySelector('.slide-wrap');
+        sildeSetting(currentSlide, slideWrap)
+        slideIndicatorSetting(slide, slideIndicatorWrap)
+
+        const handleClick = (e) => {
+            if (!e.target.classList.contains('slide-button')) return false;
+            currentSlide = parseInt(e.target.textContent, 10);
+            move();
+        }
+
+        const move = () => {
+            let indicator = slideIndicatorWrap.querySelectorAll('.slide-button')
+            indicator.forEach((button) => button.classList.remove('active')); // 슬라이드 버튼이 현재 활성화 버튼이 있다면 삭제
+
+            slideWrap.style.cssText = `transform: translate(${currentSlide * -155}%, 0); transition: all ${SPEED};`; // 슬라이더 이동
+            indicator[currentSlide - 1].classList.add('active'); // 슬라이더 버튼 활성화 세팅
+        };
+
+        slideIndicatorWrap.addEventListener('click', handleClick); // 슬라이더 버튼 이벤트 및 인덱스 설정
+        move();
+
+        return () => slideIndicatorWrap.removeEventListener('click', handleClick);
+    }, [])
+
+    const slideClassCopyAll = () => {
+        const slideWrap = sliderWrapRef.current;
         const slide = slideWrap.querySelectorAll('.slide');
 
         const beforeCloneSlide = slide[slide.length - 1].cloneNode(true); // 복제 element 마지막
@@ -20,17 +49,17 @@ function Works({ forwardRef2 }) {
         slideWrap.insertBefore(beforeCloneSlide, slideWrap.firstChild); // 마지막 복제 노드를 맨 첫번째로 삽입
         slideWrap.appendChild(afterCloneSlide); // 첫번째 복제 노드를 마지막에 삽입
 
-        const slideIndicatorWrap = document.querySelector('.slide-indicator');
+        return { slideWrap, slide }
+    }
 
-        let currentSlide = 1;
-        const speed = '0.5s';
-
-        // load 
+    const sildeSetting = (currentSlide, slideWrap) => {
         slideWrap.querySelectorAll('.slide').forEach((slide, index) => {
             slideWrap.style.cssText = `transform: translate(${currentSlide * -155}%, 0);`;
             slide.style.cssText = `opacity: 1; transform: translate(${index * 155}%, 0)`;
         });
+    }
 
+    const slideIndicatorSetting = (slide, slideIndicatorWrap) => {
         slide.forEach((_, index) => {
             if (index === 0) {
                 slideIndicatorWrap.innerHTML += `<button class="slide-button active">${index + 1}</button>`;
@@ -38,48 +67,17 @@ function Works({ forwardRef2 }) {
                 slideIndicatorWrap.innerHTML += `<button class="slide-button">${index + 1}</button>`;
             }
         });
+    }
 
-        const slideMove = () => {
-            const move = () => {
-                // 슬라이드 버튼이 현재 활성화 버튼이 있다면 삭제
-                slideIndicatorWrap.querySelectorAll('.slide-button').forEach((button) => {
-                    button.classList.remove('active');
-                });
-
-                // 슬라이더 이동
-                slideWrap.style.cssText = `transform: translate(${currentSlide * -155}%, 0); transition: all ${speed};`;
-
-                // 슬라이더 버튼 활성화 세팅
-                slideIndicatorWrap.querySelectorAll('.slide-button')
-                [currentSlide - 1].classList.add('active');
-                if (currentSlide >= slide.length) {
-                    currentSlide = 1;
-                } else {
-                    ++currentSlide;
-                }
-            };
-
-            // 슬라이더 버튼 이벤트 및 인덱스 설정
-            slideIndicatorWrap.addEventListener('click', (e) => {
-                if (!e.target.classList.contains('slide-button')) return false;
-                currentSlide = e.target.textContent;
-                move();
-            });
-        };
-        slideMove();
-
-    }, [])
     return (
-        <WorkSection id='works' ref={forwardRef2}>
+        <WorkSection id='works' ref={workForwardRef}>
             <WorkWrapper>
                 <h2><span>Works</span></h2>
 
                 {/* 슬라이더 */}
-                <SlideWrapper className="slide-wrap">
+                <SlideWrapper className="slide-wrap" ref={sliderWrapRef}>
 
-
-
-                    <div className="slide" ref={slide}>
+                    <div className="slide" >
                         {/* image */}
                         <div className="work-image-wrap">
                             <figure>
@@ -141,7 +139,7 @@ function Works({ forwardRef2 }) {
 
 
 
-                    <div className="slide" ref={slide}>
+                    <div className="slide">
                         {/* image */}
                         <div className="work-image-wrap">
                             <figure>
@@ -214,14 +212,14 @@ function Works({ forwardRef2 }) {
 
                 </SlideWrapper>
 
-                <SlideIndicator className="slide-indicator"></SlideIndicator>
+                <SlideIndicator className="slide-indicator" ref={slideIndicatorRef}></SlideIndicator>
             </WorkWrapper>
         </WorkSection>
     );
 }
 
 Works.prototype = {
-    forwardRef2: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+    workForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
 };
 
 export default forwardRef(Works);

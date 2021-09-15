@@ -12,7 +12,7 @@ import { Link } from 'react-scroll';
 
 
 function Navigation(props) {
-  // const { aboutMefowardRef, workForwardRef, footerForwardRef } = props;
+  // const { aboutForwardRef, workForwardRef, footerForwardRef } = props;
   const { workForwardRef, footerForwardRef } = props;
 
   const navMenuRef = useRef()
@@ -44,7 +44,7 @@ function Navigation(props) {
 
     switch (e.target.classList.value) {
       // case 'menu-link about':
-      //   smoothScroll(aboutMefowardRef)
+      //   smoothScroll(aboutForwardRef)
       //   break;
       case 'menu-link works':
         smoothScroll(workForwardRef)
@@ -57,7 +57,7 @@ function Navigation(props) {
         break;
     }
   }, [eventAction, workForwardRef, footerForwardRef]);
-  // }, [eventAction, aboutMefowardRef, workForwardRef, footerForwardRef]);
+  // }, [eventAction, aboutForwardRef, workForwardRef, footerForwardRef]);
 
   const onMenuBtnClick = useCallback((e) => {
     e.preventDefault();
@@ -140,7 +140,7 @@ function Navigation(props) {
   );
 }
 Navigation.prototype = {
-  aboutMefowardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+  aboutForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
   workForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
   footerForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) })
 }
