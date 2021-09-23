@@ -2,8 +2,10 @@ import React, { forwardRef, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Portfol01 from '../images/portfolio01_douzon.png';
-
+import Portfol01 from '../images/portfolio01.png';
+import Portfol02 from '../images/portfolio02.png';
+import Portfol03 from '../images/portfolio03.png';
+import Portfol04 from '../images/portfolio04.png';
 
 function Works({ workForwardRef }) {
     const sliderWrapRef = useRef(null);
@@ -29,7 +31,7 @@ function Works({ workForwardRef }) {
             let indicator = slideIndicatorWrap.querySelectorAll('.slide-button')
             indicator.forEach((button) => button.classList.remove('active')); // 슬라이드 버튼이 현재 활성화 버튼이 있다면 삭제
 
-            slideWrap.style.cssText = `transform: translate(${currentSlide * -155}%, 0); transition: all ${SPEED};`; // 슬라이더 이동
+            slideWrap.style.cssText = `transform: translate(${currentSlide * -165}%, 0); transition: all ${SPEED};`; // 슬라이더 이동
             indicator[currentSlide - 1].classList.add('active'); // 슬라이더 버튼 활성화 세팅
         };
 
@@ -54,8 +56,8 @@ function Works({ workForwardRef }) {
 
     const sildeSetting = (currentSlide, slideWrap) => {
         slideWrap.querySelectorAll('.slide').forEach((slide, index) => {
-            slideWrap.style.cssText = `transform: translate(${currentSlide * -155}%, 0);`;
-            slide.style.cssText = `opacity: 1; transform: translate(${index * 155}%, 0)`;
+            slideWrap.style.cssText = `transform: translate(${currentSlide * -165}%, 0);`;
+            slide.style.cssText = `opacity: 1; transform: translate(${index * 165}%, 0)`;
         });
     }
 
@@ -88,7 +90,7 @@ function Works({ workForwardRef }) {
                             </figure>
                             <p className="time">
                                 <time dateTime="2019-10">2019. 10</time> ~
-                                <time dateTime="2021-02">2021. 02</time>
+                                <time dateTime="2020-02">2021. 02</time>
                             </p>
                             <p className="topic">더존비즈온 Wehago 플랫폼 <br />Smart AX Web 마이그레이션 개발<br /> (법인조정, 개인조정) 및 유지보수</p>
 
@@ -109,24 +111,17 @@ function Works({ workForwardRef }) {
                                 <div className="paragraph">
                                     <strong>개발 설명</strong>
                                     <p>
-                                        개발 내용 기제
+                                        더존비즈온에서 닷넷으로 개발된 회계 솔루션 Smart A를 Wehago 플랫폼 React WEB 서비스로 마이그레이션 전환하였으며 초기 Back-End 까지 담당했었으나 출시 임박으로 인한 역할 분리가 되었습니다.
                                     </p>
                                 </div>
                             </WorkText>
                             <WorkText className="work-text w50p">
                                 <div className="paragraph">
-                                    <strong>My part</strong>
+                                    <strong>My part (Front-End)</strong>
                                     <ul>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                        <li>
-                                            설명<br />설명
-                                        </li>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                        <li>설명</li>
+                                        <li>1. 380 종 서식 중 총 40개의 신규 메뉴 개발</li>
+                                        <li>2. 2020년 5월 까지 순차적으로 서비스 전부 오픈 이후 60종 메뉴 유지보수 관리</li>
+                                        <li>3. Smart AX 부서 통합 이후 플랫폼 사업 본부에서 회계, 원천(급여) 서비스 추가 개발 담당</li>
                                     </ul>
                                 </div>
                                 <div className="paragraph">
@@ -140,71 +135,172 @@ function Works({ workForwardRef }) {
 
 
                     <div className="slide">
-                        {/* image */}
                         <div className="work-image-wrap">
                             <figure>
-                                {/* https://photoscissors.com/ */}
-                                {/* https://www.iloveimg.com/ko/resize-image */}
-                                {/* 995 * 553 */}
-                                <img src={Portfol01} alt="더존비즈온 위하고 메인" />
+                                <img src={Portfol02} alt="OSH 포트폴리오" />
                             </figure>
                             <p className="time">
-                                <time dateTime="2019-10">2019. 10</time> ~
-                                <time dateTime="2021-02">2021. 02</time>
+                                <time dateTime="2021-08">2021. 08</time> ~
+                                <time dateTime="2021-09">2021. 09</time>
                             </p>
-                            <p className="topic">더존비즈온 Wehago 플랫폼 <br />Smart AX Web 마이그레이션 개발<br /> (법인조정, 개인조정) 및 유지보수</p>
+                            <p className="topic">반응형 개인 포트폴리오 사이트 구현</p>
 
                             <LinkWrapper className="work-link-wrap">
                                 <a
-                                    href="https://www.wehago.com/landing/ko/business/"
+                                    href="https://oshosh.github.io/poportfolio/"
                                     className="work-link"
                                     target="_blank"
                                     rel="noreferrer noopener"
                                 >WebSite</a
                                 >
+                                <a
+                                    href="https://github.com/oshosh/poportfolio"
+                                    className="work-link"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >GitHub
+                                </a>
                             </LinkWrapper>
                         </div>
-
-                        {/* 소개 */}
                         <WorkTextWrapper className="work-text-wrap">
                             <WorkText className="work-text w50p">
                                 <div className="paragraph">
                                     <strong>개발 설명</strong>
                                     <p>
-                                        개발 내용 기제
+                                        핵심적으로 반응형, 크로스 브라우징을 기준 점으로 개발이 되었습니다. 모바일 기준 768px 이하 데스트탑 기준 1024px을 지원합니다. <br />
+                                        또, 저의 프로필을 확인하시어 CONTACT ME에서 채용 이메일을 전달하실 수 있습니다.
+                                    </p>
+                                </div>
+                                <div className="paragraph">
+                                    <strong>이슈 사항</strong>
+                                    <p>
+                                        react-app-polyfill을 적용하여 ie 11버젼을 지원하나 이슈사항으로 인한 고도화가 필요합니다.
                                     </p>
                                 </div>
                             </WorkText>
                             <WorkText className="work-text w50p">
                                 <div className="paragraph">
-                                    <strong>My part</strong>
-                                    <ul>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                        <li>
-                                            설명<br />설명
-                                        </li>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                        <li>설명</li>
-                                    </ul>
-                                </div>
-                                <div className="paragraph">
                                     <strong>Skills</strong>
-                                    <p>HTML5, CSS3, ES6, ReactJS, PostgreSQL, RESTful API in Django, C#(Winform)</p>
+                                    <p>HTML5, CSS3, ES6, REACT</p>
                                 </div>
+                                <div class="paragraph">
+                                    <strong>library</strong>
+                                    <p>
+                                        styled-components, gh-pages, react-hook-form, react-scroll, react-loading, emailjs-com, dotenv, react-daum-postcode
+                                    </p>
+                                </div>
+
                             </WorkText>
                         </WorkTextWrapper>
                     </div>
 
 
+                    <div className="slide">
+                        <div className="work-image-wrap">
+                            <figure>
+                                <img src={Portfol03} alt="Fakegram" />
+                            </figure>
+
+                            <p className="time">
+                                <time dateTime="2021-09">2021. 09</time> ~
+                                <time>진행중</time>
+                            </p>
+                            <p className="topic">Fakegram (SNS 사이트 구현 - 미완성)</p>
+
+                            <LinkWrapper className="work-link-wrap">
+                                <a
+                                    href="https://github.com/oshosh/Fakegram"
+                                    className="work-link"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >GitHub
+                                </a>
+                            </LinkWrapper>
+                        </div>
+
+                        <WorkTextWrapper className="work-text-wrap">
+                            <WorkText className="work-text w50p">
+                                <div className="paragraph">
+                                    <strong>개발 설명</strong>
+                                    <p>
+                                        SSR을 기반으로 한 데이터 랜더링 최적화를 기반으로 현재 개인 스터디용 미니 프로젝트입니다. <br />
+                                        기능에 맞는 전역 데이터 관리 및 실시간 소통이 가능한 공간, 다양한 디자인 프레임워크 사용등을 지향하고 있습니다.
+                                    </p>
+                                </div>
+                                <div className="paragraph">
+                                    <strong>이슈 사항</strong>
+                                    <p>
+                                        개발 시작기간이 얼마 되지 않아 서비스 오픈까지 소요 될 예정입니다.
+                                    </p>
+                                </div>
+                            </WorkText>
+                            <WorkText className="work-text w50p">
+                                <div className="paragraph">
+                                    <strong>Skills</strong>
+                                    <p>HTML5, CSS3, ES6, ANTD, REACT, NEXT, REDUX</p>
+                                </div>
+                                <div class="paragraph">
+                                    <strong>library</strong>
+                                    <p>
+                                        ant-design/icon, styled-components, react-hook-form, @hookform/error-message, redux-saga, redux-actions,  <br />
+                                        dev-tools, @hookform/resolvers, yup, react-slick, emoji-picker-react
+                                    </p>
+                                </div>
+
+                            </WorkText>
+                        </WorkTextWrapper>
+                    </div>
 
 
+                    <div className="slide">
+                        <div className="work-image-wrap">
+                            <figure>
+                                <img src={Portfol04} alt="Fakegram" />
+                            </figure>
+                            <p className="time">
+                                <time dateTime="2019-01">2019. 01</time> ~
+                                <time dateTime="2019-06">2019. 06</time>
+                            </p>
+                            <p className="topic">인증키를 통한 모듈 설치 개발 (JCertSoultion)</p>
 
+                            <LinkWrapper className="work-link-wrap">
+                                <a
+                                    href="http://www.fusiondata.co.kr/products/jdesktop.php"
+                                    className="work-link"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >WebSite
+                                </a>
+                            </LinkWrapper>
 
+                        </div>
 
+                        <WorkTextWrapper className="work-text-wrap">
+                            <WorkText className="work-text w50p">
+                                <div className="paragraph">
+                                    <strong>개발 설명</strong>
+                                    <p>
+                                        NSIS, C#을 통한 응용프로그램 설치 패키징 스크립트 제작 및 라이선스 검증 솔루션 개발을 하였습니다.
+                                    </p>
+                                </div>
+                                <div className="paragraph">
+                                    <strong>기능</strong>
+                                    <ul>
+                                        <li>1. JKeyGenerator - 암호 키 제작</li>
+                                        <li>2. JCertServer - 라이선스 검증 서버</li>
+                                        <li>3. JCertFileGenerator - 라이선스 파일 생성 프로그램</li>
+                                        <li>4. JCertFileChecker - 라이선스 유효성 검사 DLL</li>
+                                    </ul>
+                                </div>
+                            </WorkText>
+                            <WorkText className="work-text w50p">
+                                <div className="paragraph">
+                                    <strong>Skills</strong>
+                                    <p>C#(Winform, WCF), PostgreSQL, NSIS</p>
+                                </div>
+                            </WorkText>
+                        </WorkTextWrapper>
+                    </div>
 
 
 
@@ -405,12 +501,13 @@ const WorkTextWrapper = styled.div`
 
     & p {
         margin-top: 7px;
+        font-size: .9rem;
     }
 
     & ul {
         margin-top: 7px;
-        
         & li {
+            font-size: .9rem;
             list-style: none;
         }
     }

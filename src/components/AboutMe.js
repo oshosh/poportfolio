@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { mainKeywordArray } from '../util/lib/commFunction'
 function AboutMe({ aboutForwardRef }) {
-
     return (
         <Section id='about-me' ref={aboutForwardRef}>
             <div className='wrap-1200 common-group'>
@@ -20,15 +19,17 @@ function AboutMe({ aboutForwardRef }) {
                     <p>
                         저는 프론트엔드 개발자로 현업 경험이 있습니다.<br />
                         각 포지션에 있어서 업무 시, UI 개발에 대한 궁금증,<br />
-                        서버와 통신하는 부분의 궁금증이 꼬리를 물고<br />
-                        단순히 호기심에서 그치지 않고 공부를 하고 알아감으로서<br />
-                        프론트엔드 개발자로 도전할 수 있는 계기가 되었습니다.<br />
+                        비즈니스 로직 및 전사적 플로우 시스템에 대한 궁금증을 꼬리에 물고<br />
+                        단순히 호기심에서 그치지 않고 빠르게 파악 함으로서<br />
+                        같은 팀원으로 녹아들 수 있는 프론트엔드 개발자 되겠습니다.
                         <br /><br />
                         사용자가 사용하기 편리한 웹서비스를 만들어<br />
                         사람들에게 도움을 주고싶습니다.<br /><br />
 
-                        그러기 위해 구성원으로써 능동적으로 의견을 내고,<br />
-                        동료들의 의견을 들어주고 같이 협력할 수 있는 일원이 되길 희망합니다.<br />
+                        그러기 위해 구성원으로써 능동적으로 의견을 내고 들을 것이며,<br />
+                        테크 기술에 대하여 공유 할 수 있는 공생 관계를 유지할 것입니다. <br />
+                        <br />
+                        명목적인 회사가 동료가 아닌 서로 성장 할 수 있는 일원이 되길 희망합니다.
                     </p>
                     <LinkWrapper>
                         <a
@@ -72,7 +73,8 @@ function AboutMe({ aboutForwardRef }) {
                     <SkillItemBox>
                         <strong>Server</strong>
                         <p>
-                            Node Express, Django, C# WCF에서 실무 경험을 기반으로하여 Restful API한 환경을 이해하고 있습니다.<br />
+                            Django, C# WCF에서 실무 경험을 기반으로하여 Restful API한 환경을 이해하고 있습니다.<br />
+                            최근 미니 프로젝트를 진행하면서 Node Express를 공부하고 있습니다.<br />
                             번복적 수정을 최대한 줄여 작업 요구 사항을 같이 제시하여 Backend와의 적극적인 소통을 도모하겠습니다.<br />
                         </p>
                     </SkillItemBox>
