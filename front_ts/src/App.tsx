@@ -1,8 +1,19 @@
 import React from "react";
-import TestCompontent from "@components/TestCompontent";
+import { ThemeProvider } from "styled-components";
+import Information from "@pages/Information";
+
+import GlobalStyle from "@theme/GlobalStyle";
+import theme from "@theme/theme";
 
 function App() {
-  return <TestCompontent />;
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Information />
+      </ThemeProvider>
+    </>
+  );
 }
 
 export default App;
