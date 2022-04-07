@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   COORDINATE,
   mainKeywordArray,
@@ -17,78 +23,74 @@ function Header() {
   });
   const { startX, startY, bgPosX, bgPosY, movePosX, movePosY } = coordinate;
 
-  const mainKeyWord = useRef() as React.MutableRefObject<HTMLSpanElement>;
-  const ImgBackGroundRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const mainKeyWord = useRef<HTMLSpanElement>(null);
+  const ImgBackGroundRef = useRef<HTMLDivElement>(null);
 
-  const onMouseEnter = useCallback((e) => {
-    e.currentTarget.style.transition = "none";
-    // 시작 좌표
-    setCoordinate({
-      ...COORDINATE,
-      startX: e.clientX,
-    });
-    setCoordinate({
-      ...COORDINATE,
-      startY: e.clientY,
-    });
-    // background 좌표
-    setCoordinate({
-      ...COORDINATE,
-      bgPosX: ImgBackGroundRef.current.offsetTop,
-    });
-    setCoordinate({
-      ...COORDINATE,
-      bgPosY: ImgBackGroundRef.current.offsetLeft,
-    });
-  }, []);
+  const onMouseEnter = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
+      if (!ImgBackGroundRef.current) {
+        return;
+      }
+      e.currentTarget.style.transition = "none";
+      // 시작 좌표, background 좌표
+      setCoordinate({
+        ...coordinate,
+        startX: e.clientX,
+        startY: e.clientY,
+        bgPosX: ImgBackGroundRef.current.offsetTop,
+        bgPosY: ImgBackGroundRef.current.offsetLeft,
+      });
+    },
+    [coordinate]
+  );
 
   const onMouseMove = useCallback(
-    (e) => {
-      if (!startX || !startY || !bgPosX || !bgPosY || !movePosX || !movePosY)
+    (e: MouseEvent<HTMLDivElement>) => {
+      if (!ImgBackGroundRef.current) {
         return;
-
+      }
       setCoordinate({
-        ...COORDINATE,
+        ...coordinate,
         movePosX: e.clientX - startX,
-      });
-      setCoordinate({
-        ...COORDINATE,
-        movePosY: e.clientX - startY,
+        movePosY: e.clientY - startY,
       });
 
       ImgBackGroundRef.current.style.left = `${bgPosX - movePosX / 40}px`;
       ImgBackGroundRef.current.style.top = `${bgPosY - movePosY / 40}px`;
     },
-    [bgPosX, bgPosY, movePosX, movePosY, startX, startY]
+    [bgPosX, bgPosY, coordinate, movePosX, movePosY, startX, startY]
   );
 
   const onMouseOut = useCallback(
-    (e) => {
+    (e: MouseEvent<HTMLDivElement>) => {
+      if (!ImgBackGroundRef.current) {
+        return;
+      }
       setCoordinate({
-        ...COORDINATE,
+        ...coordinate,
         bgPosX: -100,
-      });
-      setCoordinate({
-        ...COORDINATE,
         bgPosY: -100,
       });
       ImgBackGroundRef.current.style.transition = "all linear 0.3s";
       ImgBackGroundRef.current.style.top = `${bgPosY}px`;
       ImgBackGroundRef.current.style.left = `${bgPosX}px`;
     },
-    [bgPosX, bgPosY]
+    [bgPosX, bgPosY, coordinate]
   );
 
   const keywordAnimation = useCallback(async (loopCount = 0) => {
+    if (!mainKeyWord.current) {
+      return;
+    }
     let textSplit = [];
     let count = 0;
 
-    textSplit = mainKeywordArray.reduce((acc, current) => {
-      // let obj: string[] = [];
-      // obj.push(current.split(""));
-      acc = acc.concat(current.split(""));
+    textSplit = mainKeywordArray.reduce<Array<string[]>>((acc, current) => {
+      let arr: Array<string[]> = [];
+      arr.push(current.split(""));
+      acc = acc.concat(arr);
       return acc;
-    }, [] as string[]);
+    }, []);
 
     while (
       loopCount !== textSplit.length &&
