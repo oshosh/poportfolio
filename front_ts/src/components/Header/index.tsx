@@ -16,8 +16,15 @@ import MyImg from "../../images/lilac-bg.jpg";
 
 import { Main, Img, SpanMainKeyWord } from "./styles";
 import { CoordinateState } from "./interface";
+import { useDispatch, useSelector } from "react-redux";
+import { ReducerType } from "@common/store/slices/rootReducer";
 
 function Header() {
+  const coordinate2 = useSelector<ReducerType, CoordinateState>(
+    (state) => state.coordinate
+  );
+  const dispatch = useDispatch();
+
   const [coordinate, setCoordinate] = useState<CoordinateState>({
     ...COORDINATE,
   });
