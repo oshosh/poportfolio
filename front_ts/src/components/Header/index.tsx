@@ -1,28 +1,15 @@
-import React, {
-  MouseEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import {
-  COORDINATE,
-  mainKeywordArray,
-  delayLetter,
-  delayWord,
-} from "@util/constant";
+import React, { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { COORDINATE, mainKeywordArray, delayLetter, delayWord } from '@util/constant';
 
-import MyImg from "../../images/lilac-bg.jpg";
+import MyImg from '../../images/lilac-bg.jpg';
+import { ReducerType } from '@common/store/slices/rootReducer';
 
-import { Main, Img, SpanMainKeyWord } from "./styles";
-import { CoordinateState } from "./interface";
-import { useDispatch, useSelector } from "react-redux";
-import { ReducerType } from "@common/store/slices/rootReducer";
+import { Main, Img, SpanMainKeyWord } from './styles';
+import { CoordinateState } from './interface';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Header() {
-  const coordinate2 = useSelector<ReducerType, CoordinateState>(
-    (state) => state.coordinate
-  );
+  const coordinate2 = useSelector<ReducerType, CoordinateState>((state) => state.coordinate);
   const dispatch = useDispatch();
 
   const [coordinate, setCoordinate] = useState<CoordinateState>({
@@ -38,7 +25,7 @@ function Header() {
       if (!ImgBackGroundRef.current) {
         return;
       }
-      e.currentTarget.style.transition = "none";
+      e.currentTarget.style.transition = 'none';
       // 시작 좌표, background 좌표
       setCoordinate({
         ...coordinate,
@@ -78,7 +65,7 @@ function Header() {
         bgPosX: -100,
         bgPosY: -100,
       });
-      ImgBackGroundRef.current.style.transition = "all linear 0.3s";
+      ImgBackGroundRef.current.style.transition = 'all linear 0.3s';
       ImgBackGroundRef.current.style.top = `${bgPosY}px`;
       ImgBackGroundRef.current.style.left = `${bgPosX}px`;
     },
@@ -94,15 +81,12 @@ function Header() {
 
     textSplit = mainKeywordArray.reduce<Array<string[]>>((acc, current) => {
       let arr: Array<string[]> = [];
-      arr.push(current.split(""));
+      arr.push(current.split(''));
       acc = acc.concat(arr);
       return acc;
     }, []);
 
-    while (
-      loopCount !== textSplit.length &&
-      count < textSplit[loopCount].length
-    ) {
+    while (loopCount !== textSplit.length && count < textSplit[loopCount].length) {
       // 글자 노출
       await delayLetter();
 
@@ -119,7 +103,7 @@ function Header() {
           : keywordAnimation(loopCount + 1);
 
         // setKeyword('')
-        mainKeyWord.current.textContent = "";
+        mainKeyWord.current.textContent = '';
         return false;
       }
       count++;
