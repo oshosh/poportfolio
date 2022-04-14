@@ -14,6 +14,5 @@
   "quoteProps": "as-needed",
   "arrow-body-style": ["error", "as-needed"],
   "requirePragma": false,
-  "useTabs": false,
-  "endOfLine": "auto"
+  "useTabs": false
 }
