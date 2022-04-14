@@ -1,16 +1,18 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-await-in-loop */
 import React, { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { COORDINATE, mainKeywordArray, delayLetter, delayWord } from '@util/constant';
 
-import MyImg from '../../images/lilac-bg.jpg';
 import { ReducerType } from '@common/store/slices/rootReducer';
+import MyImg from '@images/lilac-bg.jpg';
+import { COORDINATE, delayLetter, delayWord, mainKeywordArray } from '@util/constant';
 
-import { Main, Img, SpanMainKeyWord } from './styles';
 import { CoordinateState } from './interface';
-import { useDispatch, useSelector } from 'react-redux';
+import { Img, Main, SpanMainKeyWord } from './styles';
+// import { useDispatch, useSelector } from 'react-redux';
 
 function Header() {
-  const coordinate2 = useSelector<ReducerType, CoordinateState>((state) => state.coordinate);
-  const dispatch = useDispatch();
+  // const coordinate2 = useSelector<ReducerType, CoordinateState>((state) => state.coordinate);
+  // const dispatch = useDispatch();
 
   const [coordinate, setCoordinate] = useState<CoordinateState>({
     ...COORDINATE,
@@ -55,22 +57,19 @@ function Header() {
     [bgPosX, bgPosY, coordinate, movePosX, movePosY, startX, startY]
   );
 
-  const onMouseOut = useCallback(
-    (e: MouseEvent<HTMLDivElement>) => {
-      if (!ImgBackGroundRef.current) {
-        return;
-      }
-      setCoordinate({
-        ...coordinate,
-        bgPosX: -100,
-        bgPosY: -100,
-      });
-      ImgBackGroundRef.current.style.transition = 'all linear 0.3s';
-      ImgBackGroundRef.current.style.top = `${bgPosY}px`;
-      ImgBackGroundRef.current.style.left = `${bgPosX}px`;
-    },
-    [bgPosX, bgPosY, coordinate]
-  );
+  const onMouseOut = useCallback(() => {
+    if (!ImgBackGroundRef.current) {
+      return;
+    }
+    setCoordinate({
+      ...coordinate,
+      bgPosX: -100,
+      bgPosY: -100,
+    });
+    ImgBackGroundRef.current.style.transition = 'all linear 0.3s';
+    ImgBackGroundRef.current.style.top = `${bgPosY}px`;
+    ImgBackGroundRef.current.style.left = `${bgPosX}px`;
+  }, [bgPosX, bgPosY, coordinate]);
 
   const keywordAnimation = useCallback(async (loopCount = 0) => {
     if (!mainKeyWord.current) {
@@ -80,7 +79,7 @@ function Header() {
     let count = 0;
 
     textSplit = mainKeywordArray.reduce<Array<string[]>>((acc, current) => {
-      let arr: Array<string[]> = [];
+      const arr: Array<string[]> = [];
       arr.push(current.split(''));
       acc = acc.concat(arr);
       return acc;
@@ -98,21 +97,20 @@ function Header() {
       if (count === textSplit[loopCount].length - 1) {
         await delayWord();
 
-        textSplit.length - 1 === loopCount
-          ? keywordAnimation((loopCount = 0))
-          : keywordAnimation(loopCount + 1);
+        if (textSplit.length - 1 === loopCount) keywordAnimation((loopCount = 0));
+        else keywordAnimation(loopCount + 1);
 
         // setKeyword('')
         mainKeyWord.current.textContent = '';
-        return false;
+        return;
       }
-      count++;
+      count += 1;
     }
   }, []);
 
   useEffect(() => {
     keywordAnimation();
-  }, [keywordAnimation]);
+  }, []);
 
   return (
     <Main>
@@ -125,9 +123,9 @@ function Header() {
       />
       <h1>
         안녕하세요!&nbsp;
-        <SpanMainKeyWord a11yHidden={true}>{mainKeywordArray}</SpanMainKeyWord>
+        <SpanMainKeyWord a11yHidden>{mainKeywordArray}</SpanMainKeyWord>
         {/* <SpanMainKeyWord ref={mainKeyWord}>{keyword}</SpanMainKeyWord><br /> */}
-        <SpanMainKeyWord ref={mainKeyWord}></SpanMainKeyWord>
+        <SpanMainKeyWord ref={mainKeyWord} />
         <br />
         프론트엔드 개발자 오세현입니다 :D
       </h1>

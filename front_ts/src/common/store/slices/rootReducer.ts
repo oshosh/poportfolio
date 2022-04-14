@@ -1,5 +1,6 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import coordinate from "./coordinate";
+import { combineReducers } from '@reduxjs/toolkit';
+
+import coordinate from './coordinate';
 
 const reducer = combineReducers({
   coordinate,

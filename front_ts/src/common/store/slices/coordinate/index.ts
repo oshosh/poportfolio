@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { CoordinateState } from './intetface';
 
 const initialState: CoordinateState = {
@@ -15,7 +16,8 @@ export const coordinate = createSlice({
   initialState,
   reducers: {
     setCoordinate: (state: any, action: PayloadAction<CoordinateState>): any => {
-      return [...state, action.payload];
+      // return [...state, action.payload];
+      return null;
     },
   },
 });

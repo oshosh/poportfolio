@@ -1,8 +1,9 @@
-import styled, { css } from "styled-components";
-import { ImgProps, SpanMainKeyWordProps } from "./interface";
+import styled, { css } from 'styled-components';
+
+import { ImgProps, SpanMainKeyWordProps } from './interface';
 
 const Main = styled.main`
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +40,7 @@ const Main = styled.main`
     }
   }
 `;
-//img -> div https://stackoverflow.com/questions/8200204/fit-background-image-to-div
+// img -> div https://stackoverflow.com/questions/8200204/fit-background-image-to-div
 const Img = styled.div<ImgProps>`
   position: absolute;
   top: -100px;
@@ -81,4 +82,4 @@ const SpanMainKeyWord = styled.span<SpanMainKeyWordProps>`
   }
 `;
 
-export { Main, Img, SpanMainKeyWord };
+export { Img, Main, SpanMainKeyWord };
