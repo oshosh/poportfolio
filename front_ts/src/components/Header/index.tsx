@@ -20,11 +20,11 @@ function Header() {
   const { startX, startY, bgPosX, bgPosY, movePosX, movePosY } = coordinate;
 
   const mainKeyWord = useRef<HTMLSpanElement>(null);
-  const ImgBackGroundRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLDivElement>(null);
 
   const onMouseEnter = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
-      if (!ImgBackGroundRef.current) {
+      if (!imgRef.current) {
         return;
       }
       e.currentTarget.style.transition = 'none';
@@ -33,8 +33,8 @@ function Header() {
         ...coordinate,
         startX: e.clientX,
         startY: e.clientY,
-        bgPosX: ImgBackGroundRef.current.offsetTop,
-        bgPosY: ImgBackGroundRef.current.offsetLeft,
+        bgPosX: imgRef.current.offsetTop,
+        bgPosY: imgRef.current.offsetLeft,
       });
     },
     [coordinate]
@@ -42,7 +42,7 @@ function Header() {
 
   const onMouseMove = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
-      if (!ImgBackGroundRef.current) {
+      if (!imgRef.current) {
         return;
       }
       setCoordinate({
@@ -51,14 +51,14 @@ function Header() {
         movePosY: e.clientY - startY,
       });
 
-      ImgBackGroundRef.current.style.left = `${bgPosX - movePosX / 40}px`;
-      ImgBackGroundRef.current.style.top = `${bgPosY - movePosY / 40}px`;
+      imgRef.current.style.left = `${bgPosX - movePosX / 40}px`;
+      imgRef.current.style.top = `${bgPosY - movePosY / 40}px`;
     },
     [bgPosX, bgPosY, coordinate, movePosX, movePosY, startX, startY]
   );
 
   const onMouseOut = useCallback(() => {
-    if (!ImgBackGroundRef.current) {
+    if (!imgRef.current) {
       return;
     }
     setCoordinate({
@@ -66,9 +66,9 @@ function Header() {
       bgPosX: -100,
       bgPosY: -100,
     });
-    ImgBackGroundRef.current.style.transition = 'all linear 0.3s';
-    ImgBackGroundRef.current.style.top = `${bgPosY}px`;
-    ImgBackGroundRef.current.style.left = `${bgPosX}px`;
+    imgRef.current.style.transition = 'all linear 0.3s';
+    imgRef.current.style.top = `${bgPosY}px`;
+    imgRef.current.style.left = `${bgPosX}px`;
   }, [bgPosX, bgPosY, coordinate]);
 
   const keywordAnimation = useCallback(async (loopCount = 0) => {
@@ -115,7 +115,7 @@ function Header() {
   return (
     <Main>
       <Img
-        ref={ImgBackGroundRef}
+        ref={imgRef}
         img={MyImg}
         onMouseEnter={onMouseEnter}
         onMouseMove={onMouseMove}

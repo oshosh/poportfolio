@@ -1,7 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-    
     body {
         transition: all 1s;
         width: 100%;
@@ -37,6 +36,6 @@ const GlobalStyle = createGlobalStyle`
         padding: 0
     }
     
-`
+`;
 
 export default GlobalStyle;
