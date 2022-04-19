@@ -1,4 +1,4 @@
-export interface CoordinateState {
+export interface CoordinateProps {
   startX: number;
   startY: number;
 

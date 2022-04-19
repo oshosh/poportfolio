@@ -40,12 +40,3 @@ export const mainKeywordArray: string[] = [
   '끈기있게 노력하는',
   '문서화를 잘하는',
 ];
-
-export const COORDINATE = {
-  startX: 0,
-  startY: 0,
-  bgPosX: 0,
-  bgPosY: 0,
-  movePosX: 0,
-  movePosY: 0,
-};
