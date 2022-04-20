@@ -12,8 +12,10 @@ const Section = styled.section`
   }
 
   ${({ theme }) => {
-    const { titleColor } = theme.colors;
-    const { InlineBlockSpanUnderLine } = theme.common;
+    const {
+      colors: { titleColor },
+      common: { InlineBlockSpanUnderLine },
+    } = theme;
     return css`
       & h2 {
         margin: 50px 0;
@@ -45,9 +47,11 @@ const IntroduceWrapper = styled.div`
   line-height: 1.6;
 
   ${({ theme }) => {
-    const { AboutTitle } = theme.common;
-    const { purple, gray } = theme.colors;
-    const { mobile } = theme.device;
+    const {
+      common: { AboutTitle },
+      colors: { purple, gray },
+      device: { mobile },
+    } = theme;
     return css`
       & p:first-child {
         ${AboutTitle};
@@ -117,7 +121,9 @@ const SkillWrapper = styled.div`
   box-sizing: border-box;
 
   ${({ theme }) => {
-    const { mobile } = theme.device;
+    const {
+      device: { mobile },
+    } = theme;
     return css`
       @media ${mobile} {
         & {
@@ -133,9 +139,11 @@ const SkillItemBox = styled.div`
   padding: 0 10px;
 
   ${({ theme }) => {
-    const { mobile } = theme.device;
-    const { AboutTitle } = theme.common;
-    const { gray } = theme.colors;
+    const {
+      device: { mobile },
+      common: { AboutTitle },
+      colors: { gray },
+    } = theme;
     return css`
       & strong {
         display: inline-block;
@@ -163,60 +171,66 @@ const LinkWrapper = styled.div`
   margin-top: 50px;
   position: relative;
 
-  & a {
-    display: inline-block;
-    color: ${({ theme }) => theme.colors.darkPurple};
-    border: 2px solid ${({ theme }) => theme.colors.darkPurple};
-    border-radius: 50px;
-    padding: 15px 30px;
+  ${({ theme }) => {
+    const {
+      device: { mobile },
+      colors: { darkPurple, purple },
+    } = theme;
+    return css`
+      & a {
+        display: inline-block;
 
-    text-decoration: none;
+        color: ${darkPurple};
+        border: 2px solid ${darkPurple};
+        border-radius: 50px;
+        padding: 15px 30px;
 
-    overflow: hidden;
-    position: relative;
+        overflow: hidden;
+        position: relative;
+        &::before {
+          content: '';
+          background: ${purple};
+          z-index: -1;
 
-    &::before {
-      content: '';
-      background: ${({ theme }) => theme.colors.purple};
-      z-index: -1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0px;
+          height: 100%;
 
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0px;
-      height: 100%;
+          transition: all 0.7s;
+          opacity: 0.5;
+        }
+        &:hover {
+          font-weight: 800;
 
-      transition: all 0.7s;
-      opacity: 0.5;
-    }
-    &:hover {
-      font-weight: 800;
+          &::before {
+            content: '';
+            width: 100%;
+            background: ${purple};
+          }
+        }
 
-      &::before {
-        content: '';
-        width: 100%;
-        background: ${({ theme }) => theme.colors.purple};
+        & + a {
+          margin-left: 5px;
+        }
       }
-    }
 
-    & + a {
-      margin-left: 5px;
-    }
-  }
+      @media ${mobile} {
+        & {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
-  @media ${({ theme }) => theme.device.mobile} {
-    & {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    & a {
-      width: 50%;
-      font-size: 0.9rem;
-      text-align: center;
-    }
-  }
+        & a {
+          width: 50%;
+          font-size: 0.9rem;
+          text-align: center;
+        }
+      }
+    `;
+  }}
 `;
 
 export { IntroduceWrapper, LinkWrapper, Section, SkillItemBox, SkillWrapper };

@@ -11,8 +11,10 @@ const Main = styled.main`
   overflow: hidden;
 
   ${({ theme }) => {
-    const { purple, titleColor } = theme.colors;
-    const { mobile } = theme.device;
+    const {
+      colors: { purple, titleColor },
+      device: { mobile },
+    } = theme;
     return css`
       background: ${purple};
 
@@ -35,12 +37,11 @@ const Main = styled.main`
             opacity: 1;
           }
         }
-
-        @media ${mobile} {
-          & h1 {
-            padding: 0 1rem;
-            font-size: 1.3rem;
-          }
+      }
+      @media ${mobile} {
+        & h1 {
+          padding: 0 1rem;
+          font-size: 1.3rem;
         }
       }
     `;
