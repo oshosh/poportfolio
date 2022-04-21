@@ -42,9 +42,9 @@ function AboutMe() {
           </LinkWrapper>
         </IntroduceWrapper>
         <SkillWrapper className='skill-text-wrap'>
-          {mySkill?.map(({ name, content, id }) => {
-            return <SkillItemBox key={id} name={name} content={content} />;
-          })}
+          {mySkill?.map(({ name, content, id }) => (
+            <SkillItemBox key={id} name={name} content={content} />
+          ))}
         </SkillWrapper>
       </div>
     </Section>
