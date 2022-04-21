@@ -133,38 +133,7 @@ const SkillWrapper = styled.div`
     `;
   }}
 `;
-const SkillItemBox = styled.div`
-  width: 50%;
-  box-sizing: border-box;
-  padding: 0 10px;
 
-  ${({ theme }) => {
-    const {
-      device: { mobile },
-      common: { AboutTitle },
-      colors: { gray },
-    } = theme;
-    return css`
-      & strong {
-        display: inline-block;
-        ${AboutTitle};
-      }
-
-      & p {
-        margin-top: 10px;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: ${gray};
-      }
-
-      @media ${mobile} {
-        & p {
-          font-size: 0.8rem;
-        }
-      }
-    `;
-  }}
-`;
 // http://jsfiddle.net/xwmWK/
 // hover before transition
 const LinkWrapper = styled.div`
@@ -233,4 +202,4 @@ const LinkWrapper = styled.div`
   }}
 `;
 
-export { IntroduceWrapper, LinkWrapper, Section, SkillItemBox, SkillWrapper };
+export { IntroduceWrapper, LinkWrapper, Section, SkillWrapper };

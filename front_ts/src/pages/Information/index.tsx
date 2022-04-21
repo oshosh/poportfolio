@@ -1,9 +1,15 @@
 import React from 'react';
 
-import Header from '@components/Header';
+import AboutMe from '@pages/Information/AboutMe';
+import Header from '@pages/Information/Header';
 
 function Information() {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <AboutMe />
+    </>
+  );
 }
 
 export default Information;
