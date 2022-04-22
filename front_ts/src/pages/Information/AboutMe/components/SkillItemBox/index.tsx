@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Skill } from '@util/constant';
+import { Skill } from '../../interface';
 
 import { ItemBox } from './styles';
 

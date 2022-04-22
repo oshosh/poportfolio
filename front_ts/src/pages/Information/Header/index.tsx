@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCoordinate } from '@common/store/slices/coordinate';
 import { ReducerType } from '@common/store/slices/rootReducer';
 import MyImg from '@images/lilac-bg.jpg';
-import { delayLetter, delayWord, mainKeywordArray } from '@util/constant';
+import { delayLetter, delayWord } from '@util/helper';
 
+import { mainKeywordArray } from './constants';
 import { CoordinateProps } from './interface';
 import { Img, Main, SpanMainKeyWord } from './styles';
 

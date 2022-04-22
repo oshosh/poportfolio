@@ -1,8 +1,11 @@
 import React from 'react';
 
-import { introduce, mainKeywordArray, mySkill } from '@util/constant';
+import LinkButton from '@common/components/LinkButton';
+
+import { mainKeywordArray } from '../Header/constants';
 
 import SkillItemBox from './components/SkillItemBox';
+import { introduce, mySkill, outLink } from './constants';
 import { IntroduceWrapper, LinkWrapper, Section, SkillWrapper } from './styles';
 
 function AboutMe() {
@@ -29,16 +32,9 @@ function AboutMe() {
             ))}
           </p>
           <LinkWrapper>
-            <a
-              href='https://unique-diadem-604.notion.site/f4391fd3ffb34d0fac61019e12270742'
-              target='_blank'
-              rel='noreferrer noopener'
-            >
-              이력서 바로가기
-            </a>
-            <a href='https://github.com/oshosh' target='_blank' rel='noreferrer noopener'>
-              GitHub 바로가기
-            </a>
+            {outLink?.map(({ address, content, id }) => (
+              <LinkButton key={id} address={address} content={content} />
+            ))}
           </LinkWrapper>
         </IntroduceWrapper>
         <SkillWrapper className='skill-text-wrap'>

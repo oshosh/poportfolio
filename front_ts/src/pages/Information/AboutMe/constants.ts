@@ -1,51 +1,6 @@
-interface styleProps {
-  display: string;
-  position: string;
-  top: string;
-  left: string;
-  width: string;
-  height: string;
-  padding: string;
-}
+import { LinkProps } from '@common/components/LinkButton/interface';
 
-export interface Skill {
-  id?: number;
-  name: string;
-  content: string;
-}
-
-export const delayLetter = (): Promise<void> => {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 200);
-  });
-};
-
-export const delayWord = (): Promise<void> => {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000);
-  });
-};
-
-export const postCodeStyle: styleProps = {
-  display: 'block',
-  position: 'absolute',
-  // top: "50%",
-  top: '-200%',
-  left: '-10%',
-  width: '400px',
-  height: '500px',
-  padding: '7px',
-};
-
-export const mainKeywordArray: string[] = [
-  '깊이있게 탐구하는',
-  '끈기있게 노력하는',
-  '문서화를 잘하는',
-];
+import { Skill } from './interface';
 
 export const introduce = `저는 프론트엔드 개발자로 현업 경험이 있습니다.
 각 포지션에 있어서 업무 시, UI 개발에 대한 궁금증,
@@ -97,5 +52,18 @@ export const mySkill: Array<Skill> = [
     id: 6,
     name: 'ETC',
     content: `  Confluence WIKI를 통하여 공통 로직 및 공통 컴포넌트에 대한 문서를 정의하여 공유하고 의견을 취합하여 반영 할 수 있는 문서 작성 능력을 갖추고 있습니다.`,
+  },
+];
+
+export const outLink: Array<LinkProps> = [
+  {
+    id: 1,
+    address: 'https://unique-diadem-604.notion.site/f4391fd3ffb34d0fac61019e12270742',
+    content: '이력서 바로가기',
+  },
+  {
+    id: 2,
+    address: 'https://github.com/oshosh',
+    content: 'GitHub 바로가기',
   },
 ];
