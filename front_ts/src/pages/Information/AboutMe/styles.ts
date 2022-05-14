@@ -10,31 +10,6 @@ const Section = styled.section`
     display: flex;
     flex-flow: row wrap;
   }
-
-  ${({ theme }) => {
-    const {
-      colors: { titleColor },
-      common: { InlineBlockSpanUnderLine },
-    } = theme;
-    return css`
-      & h2 {
-        margin: 50px 0;
-        font-weight: 400;
-        font-size: 2.2rem;
-        text-align: center;
-        color: ${titleColor};
-        flex-basis: 100%;
-
-        & span {
-          display: inline-block;
-        }
-
-        & span::after {
-          ${InlineBlockSpanUnderLine};
-        }
-      }
-    `;
-  }}
 `;
 
 const IntroduceWrapper = styled.div`

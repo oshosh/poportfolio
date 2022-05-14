@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LinkButton from '@common/components/LinkButton';
+import SectionTitle from '@common/components/SectionTitle';
 
 import { mainKeywordArray } from '../Header/constants';
 
@@ -12,11 +13,7 @@ function AboutMe() {
   return (
     <Section id='about-me'>
       <div className='wrap-1200 common-group'>
-        <h2>
-          <span>
-            <b>ABOUT</b> ME
-          </span>
-        </h2>
+        <SectionTitle boldTitle='ABOUT' title='ME' />
         <IntroduceWrapper className='introduce-text-wrap'>
           <p className='introduce-title'>안녕하세요 :D</p>
           <p>
