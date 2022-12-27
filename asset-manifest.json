@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/poportfolio/static/js/main.js",
-    "runtime-main.js": "/poportfolio/static/js/runtime-main.js",
-    "vendors~main.js": "/poportfolio/static/js/vendors~main.js",
-    "static/js/3.js": "/poportfolio/static/js/3.js",
-    "static/js/4.js": "/poportfolio/static/js/4.js",
-    "static/js/5.js": "/poportfolio/static/js/5.js",
-    "static/js/6.js": "/poportfolio/static/js/6.js",
-    "static/js/7.js": "/poportfolio/static/js/7.js",
-    "static/js/8.js": "/poportfolio/static/js/8.js",
+    "main.js": "/poportfolio/static/js/main.c2edefc1.chunk.js",
+    "runtime-main.js": "/poportfolio/static/js/runtime-main.2ef0be6e.js",
+    "vendors~main.js": "/poportfolio/static/js/vendors~main.b8367c74.chunk.js",
+    "static/js/3.a16f78ac.chunk.js": "/poportfolio/static/js/3.a16f78ac.chunk.js",
+    "static/js/4.b5e0b46a.chunk.js": "/poportfolio/static/js/4.b5e0b46a.chunk.js",
+    "static/js/5.6d3d497b.chunk.js": "/poportfolio/static/js/5.6d3d497b.chunk.js",
+    "static/js/6.5d8b3cb8.chunk.js": "/poportfolio/static/js/6.5d8b3cb8.chunk.js",
+    "static/js/7.c0ab6caf.chunk.js": "/poportfolio/static/js/7.c0ab6caf.chunk.js",
+    "static/js/8.c93cff96.chunk.js": "/poportfolio/static/js/8.c93cff96.chunk.js",
     "index.html": "/poportfolio/index.html",
-    "static/js/4.js.LICENSE.txt": "/poportfolio/static/js/4.js.LICENSE.txt",
-    "static/js/8.js.LICENSE.txt": "/poportfolio/static/js/8.js.LICENSE.txt",
-    "static/js/vendors~main.js.LICENSE.txt": "/poportfolio/static/js/vendors~main.js.LICENSE.txt",
+    "static/js/4.b5e0b46a.chunk.js.LICENSE.txt": "/poportfolio/static/js/4.b5e0b46a.chunk.js.LICENSE.txt",
+    "static/js/8.c93cff96.chunk.js.LICENSE.txt": "/poportfolio/static/js/8.c93cff96.chunk.js.LICENSE.txt",
+    "static/js/vendors~main.b8367c74.chunk.js.LICENSE.txt": "/poportfolio/static/js/vendors~main.b8367c74.chunk.js.LICENSE.txt",
     "static/media/chat_w.9a4fea75.png": "/poportfolio/static/media/chat_w.9a4fea75.png",
     "static/media/lilac-bg.f9356c39.jpg": "/poportfolio/static/media/lilac-bg.f9356c39.jpg",
     "static/media/mail_w.85012c91.png": "/poportfolio/static/media/mail_w.85012c91.png",
@@ -23,8 +23,8 @@
     "static/media/toggle-btn.58f9ef29.svg": "/poportfolio/static/media/toggle-btn.58f9ef29.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.js",
-    "static/js/vendors~main.js",
-    "static/js/main.js"
+    "static/js/runtime-main.2ef0be6e.js",
+    "static/js/vendors~main.b8367c74.chunk.js",
+    "static/js/main.c2edefc1.chunk.js"
   ]
 }
