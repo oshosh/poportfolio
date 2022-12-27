@@ -16,7 +16,7 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn build
+        run: npm run deploy
 
       - name: Cache dependencies
         uses: actions/cache@v2
