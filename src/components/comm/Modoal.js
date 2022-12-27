@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
 // import CloseButton from './CloseButton'
 
@@ -11,11 +11,11 @@ function Modal({ className, onClose, maskClosable, closable, visible, children, 
         }
     }
 
-    const close = (e) => {
-        if (onClose) {
-            onClose(e)
-        }
-    }
+    // const close = (e) => {
+    //     if (onClose) {
+    //         onClose(e)
+    //     }
+    // }
     return (
         <>
             <ModalOverlay visible={visible} />

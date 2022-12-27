@@ -1,5 +1,6 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import Portfol01 from '../images/portfolio01.png';
@@ -23,7 +24,7 @@ function Works({ workForwardRef }) {
 
         const handleClick = (e) => {
             if (!e.target.classList.contains('slide-button')) return false;
-            currentSlide = parseInt(e.target.textContent, 10);
+            currentSlide = Number(e.target.textContent);
             move();
         }
 
