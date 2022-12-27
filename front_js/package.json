@@ -4,8 +4,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@craco/craco": "6.4.3",
     "@hookform/error-message": "^2.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -30,10 +28,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "env-cmd -f .env craco start",
-    "build": "env-cmd -f .env craco build",
-    "test": "env-cmd -f .env craco test",
-    "eject": "env-cmd -f .env craco eject",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -55,13 +53,5 @@
       "last 1 safari version",
       "ie 11"
     ]
-  },
-  "devDependencies": {
-    "@babel/preset-env": "7.12.1",
-    "@babel/preset-react": "7.12.1",
-    "babel-loader": "8.1.0",
-    "babel-plugin-transform-remove-console": "6.9.4",
-    "craco-alias": "3.0.1",
-    "env-cmd": "10.1.0"
   }
 }
