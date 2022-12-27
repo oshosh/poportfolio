@@ -17,8 +17,8 @@ jobs:
 
       - name: Build
         env:
-        MY_EMAIL: dhtpgus7@gmail.com
-        MY_NAME: oshosh
+          MY_EMAIL: dhtpgus7@gmail.com
+          MY_NAME: oshosh
         run: |
           git config --global user.email $MY_EMAIL
           git config --global user.name $MY_NAME
