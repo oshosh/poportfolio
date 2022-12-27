@@ -1,15 +1,7 @@
-module.exports = {
-  plugins: [],
+const prdEnv = {
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
-      console.log(env)
-      if (env !== 'production') {
-        webpackConfig.devtool = 'source-map';
-      } else {
-        console.log('hi')
-        webpackConfig.devtool = 'eval-source-map';
-      }
-
+      webpackConfig.devtool = 'inline-source-map';
       return webpackConfig;
     }
   },
@@ -21,4 +13,32 @@ module.exports = {
       ],
     ],
   },
-};
+}
+
+const devEnv = {
+  webpack: {
+    configure: (webpackConfig, { env, paths }) => {
+      webpackConfig.module.rules.push({
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      });
+      
+      webpackConfig.devtool = 'hidden-source-map';
+      return webpackConfig;
+    }
+  },
+  babel: {
+    presets: [
+      ['@babel/preset-env', '@babel/preset-react']
+    ],
+  },
+}
+
+const env = process.env.NODE_ENV === 'dev' ? devEnv : prdEnv;
+module.exports = env;

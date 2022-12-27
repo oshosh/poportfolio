@@ -17,7 +17,9 @@ function App() {
   const AboutMe = loadable(() => import("./components/AboutMe"));
   const Works = loadable(() => import("./components/Works"));
   const Footer = loadable(() => import("./components/Footer"));
-
+  console.log('sadfs')
+  debugger
+  
   return (
     <>
       <GlobalStyle />
