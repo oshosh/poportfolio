@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
-import GlobalStyle from "./theme/GlobalStyle";
 import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./theme/GlobalStyle";
 import theme from "./theme/theme";
 
 import loadable from "loadable-components";
@@ -17,6 +17,7 @@ function App() {
   const AboutMe = loadable(() => import("./components/AboutMe"));
   const Works = loadable(() => import("./components/Works"));
   const Footer = loadable(() => import("./components/Footer"));
+  console.log('test')
 
   return (
     <>
