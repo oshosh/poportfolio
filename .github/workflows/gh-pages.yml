@@ -16,7 +16,13 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run deploy
+        env:
+        MY_EMAIL: dhtpgus7@gmail.com
+        MY_NAME: oshosh
+        run: |
+          git config --global user.email $MY_EMAIL
+          git config --global user.name $MY_NAME
+          npm run deploy
 
       - name: Cache dependencies
         uses: actions/cache@v3
