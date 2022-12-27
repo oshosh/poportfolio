@@ -19,7 +19,7 @@ module.exports = {
   },
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
-      paths.appBuild = 'dist'
+      paths.appBuild = 'build'
       
       webpackConfig.output = {
         ...webpackConfig.output,
@@ -27,7 +27,7 @@ module.exports = {
           filename: whenDev(() => 'static/js/bundle.js', 'static/js/[name].js'),
           chunkFilename: 'static/js/[name].js'
         },
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build'),
         publicPath: '/'
       }
 
