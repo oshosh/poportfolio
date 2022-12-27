@@ -1,4 +1,4 @@
-name: github pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -7,27 +7,16 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code.
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run deploy
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+          node-version: 14.x
+      - run: npm install
+      - run: npm run deploy
+      - uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./build
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
