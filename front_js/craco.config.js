@@ -1,12 +1,12 @@
-
-console.log(process.env.NODE_ENV)
 module.exports = {
   plugins: [],
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
-      if (env === 'production') {
+      console.log(env)
+      if (env !== 'production') {
         webpackConfig.devtool = 'source-map';
       } else {
+        console.log('hi')
         webpackConfig.devtool = 'eval-source-map';
       }
 
