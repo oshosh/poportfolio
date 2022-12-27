@@ -1,18 +1,27 @@
 {
   "files": {
-    "main.js": "/poportfolio/static/js/main.56050665.chunk.js",
-    "runtime-main.js": "/poportfolio/static/js/runtime-main.3869735f.js",
-    "static/js/2.5f960db9.chunk.js": "/poportfolio/static/js/2.5f960db9.chunk.js",
-    "static/js/3.192a910e.chunk.js": "/poportfolio/static/js/3.192a910e.chunk.js",
-    "static/js/4.475399a3.chunk.js": "/poportfolio/static/js/4.475399a3.chunk.js",
-    "static/js/5.8b5a417f.chunk.js": "/poportfolio/static/js/5.8b5a417f.chunk.js",
-    "static/js/6.631944fa.chunk.js": "/poportfolio/static/js/6.631944fa.chunk.js",
-    "static/js/7.adcd405f.chunk.js": "/poportfolio/static/js/7.adcd405f.chunk.js",
-    "static/js/8.15121c25.chunk.js": "/poportfolio/static/js/8.15121c25.chunk.js",
+    "main.js": "/poportfolio/static/js/main.72c1d784.chunk.js",
+    "main.js.map": "/poportfolio/static/js/main.72c1d784.chunk.js.map",
+    "runtime-main.js": "/poportfolio/static/js/runtime-main.6d1bd6a3.js",
+    "runtime-main.js.map": "/poportfolio/static/js/runtime-main.6d1bd6a3.js.map",
+    "static/js/2.53fd68eb.chunk.js": "/poportfolio/static/js/2.53fd68eb.chunk.js",
+    "static/js/2.53fd68eb.chunk.js.map": "/poportfolio/static/js/2.53fd68eb.chunk.js.map",
+    "static/js/3.eab75b73.chunk.js": "/poportfolio/static/js/3.eab75b73.chunk.js",
+    "static/js/3.eab75b73.chunk.js.map": "/poportfolio/static/js/3.eab75b73.chunk.js.map",
+    "static/js/4.aa287868.chunk.js": "/poportfolio/static/js/4.aa287868.chunk.js",
+    "static/js/4.aa287868.chunk.js.map": "/poportfolio/static/js/4.aa287868.chunk.js.map",
+    "static/js/5.2e3b585b.chunk.js": "/poportfolio/static/js/5.2e3b585b.chunk.js",
+    "static/js/5.2e3b585b.chunk.js.map": "/poportfolio/static/js/5.2e3b585b.chunk.js.map",
+    "static/js/6.548128a9.chunk.js": "/poportfolio/static/js/6.548128a9.chunk.js",
+    "static/js/6.548128a9.chunk.js.map": "/poportfolio/static/js/6.548128a9.chunk.js.map",
+    "static/js/7.77150196.chunk.js": "/poportfolio/static/js/7.77150196.chunk.js",
+    "static/js/7.77150196.chunk.js.map": "/poportfolio/static/js/7.77150196.chunk.js.map",
+    "static/js/8.2719a506.chunk.js": "/poportfolio/static/js/8.2719a506.chunk.js",
+    "static/js/8.2719a506.chunk.js.map": "/poportfolio/static/js/8.2719a506.chunk.js.map",
     "index.html": "/poportfolio/index.html",
-    "static/js/2.5f960db9.chunk.js.LICENSE.txt": "/poportfolio/static/js/2.5f960db9.chunk.js.LICENSE.txt",
-    "static/js/3.192a910e.chunk.js.LICENSE.txt": "/poportfolio/static/js/3.192a910e.chunk.js.LICENSE.txt",
-    "static/js/4.475399a3.chunk.js.LICENSE.txt": "/poportfolio/static/js/4.475399a3.chunk.js.LICENSE.txt",
+    "static/js/2.53fd68eb.chunk.js.LICENSE.txt": "/poportfolio/static/js/2.53fd68eb.chunk.js.LICENSE.txt",
+    "static/js/4.aa287868.chunk.js.LICENSE.txt": "/poportfolio/static/js/4.aa287868.chunk.js.LICENSE.txt",
+    "static/js/8.2719a506.chunk.js.LICENSE.txt": "/poportfolio/static/js/8.2719a506.chunk.js.LICENSE.txt",
     "static/media/chat_w.9a4fea75.png": "/poportfolio/static/media/chat_w.9a4fea75.png",
     "static/media/lilac-bg.f9356c39.jpg": "/poportfolio/static/media/lilac-bg.f9356c39.jpg",
     "static/media/mail_w.85012c91.png": "/poportfolio/static/media/mail_w.85012c91.png",
@@ -20,11 +29,11 @@
     "static/media/portfolio02.fc9a0c6c.png": "/poportfolio/static/media/portfolio02.fc9a0c6c.png",
     "static/media/portfolio03.708cae36.png": "/poportfolio/static/media/portfolio03.708cae36.png",
     "static/media/portfolio04.25e450ba.png": "/poportfolio/static/media/portfolio04.25e450ba.png",
-    "static/media/toggle-btn.7d2e3464.svg": "/poportfolio/static/media/toggle-btn.7d2e3464.svg"
+    "static/media/toggle-btn.58f9ef29.svg": "/poportfolio/static/media/toggle-btn.58f9ef29.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3869735f.js",
-    "static/js/2.5f960db9.chunk.js",
-    "static/js/main.56050665.chunk.js"
+    "static/js/runtime-main.6d1bd6a3.js",
+    "static/js/2.53fd68eb.chunk.js",
+    "static/js/main.72c1d784.chunk.js"
   ]
 }
