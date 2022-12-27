@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/preset-env": "^7.20.2",
     "@craco/craco": "6.4.3",
     "@hookform/error-message": "^2.0.0",
     "@testing-library/jest-dom": "^5.11.4",
