@@ -1,15 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  delayletter,
-  delayWord,
-  mainKeywordArray,
-} from "../util/lib/commFunction";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
 
-import styled, { css } from "styled-components";
+import { delayletter, delayWord, mainKeywordArray } from '../../../util/lib/commFunction';
+import Myimg from '../../../images/lilac-bg.jpg';
+import GlobalStyle from '../../../theme/GlobalStyle';
 
-import Myimg from "../images/lilac-bg.jpg";
-import GlobalStyle from "../theme/GlobalStyle";
-import Navigation from "./Navigation";
+import Navigation from './Navigation';
 
 function Header(props) {
   const mainKeyWord = useRef();
@@ -27,7 +23,7 @@ function Header(props) {
   let [movePosY, setMovePosY] = useState(0);
 
   const onMouseEnter = useCallback((e) => {
-    e.currentTarget.style.transition = "none";
+    e.currentTarget.style.transition = 'none';
     // 시작 좌표
     setStartX(e.clientX);
     setStartY(e.clientY);
@@ -52,7 +48,7 @@ function Header(props) {
     (e) => {
       setBgPosX(-100);
       setBgPosY(-100);
-      ImgBackGroundRef.current.style.transition = "all linear 0.3s";
+      ImgBackGroundRef.current.style.transition = 'all linear 0.3s';
       ImgBackGroundRef.current.style.top = `${bgPosY}px`;
       ImgBackGroundRef.current.style.left = `${bgPosX}px`;
     },
@@ -65,15 +61,12 @@ function Header(props) {
 
     textSplit = mainKeywordArray.reduce((acc, current) => {
       let obj = [];
-      obj.push(current.split(""));
+      obj.push(current.split(''));
       acc = acc.concat(obj);
       return acc;
     }, []);
 
-    while (
-      loopCount !== textSplit.length &&
-      count < textSplit[loopCount].length
-    ) {
+    while (loopCount !== textSplit.length && count < textSplit[loopCount].length) {
       // 글자 노출
       await delayletter();
 
@@ -90,7 +83,7 @@ function Header(props) {
           : keywordAnimation(loopCount + 1);
 
         // setKeyword('')
-        mainKeyWord.current.textContent = "";
+        mainKeyWord.current.textContent = '';
         return false;
       }
       count++;
@@ -114,9 +107,7 @@ function Header(props) {
         />
         <h1>
           안녕하세요!&nbsp;
-          <SpanMainKeyWord a11yHidden={true}>
-            {mainKeywordArray}
-          </SpanMainKeyWord>
+          <SpanMainKeyWord a11yHidden={true}>{mainKeywordArray}</SpanMainKeyWord>
           {/* <SpanMainKeyWord ref={mainKeyWord}>{keyword}</SpanMainKeyWord><br /> */}
           <SpanMainKeyWord ref={mainKeyWord}></SpanMainKeyWord>
           <br />
@@ -132,7 +123,7 @@ export default Header;
 
 /* compontents */
 const Main = styled.main`
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,96 +1,103 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-import AboutMeImg from '../images/chat_w.png'
-import WorksImg from '../images/code_w.png'
-import FooterImg from '../images/mail_w.png'
-import OpenBtn from '../images/toggle-btn.svg'
-import CloseBtn from '../images/close_button.png'
-import GithubLogo from '../images/github.png'
 import { Link } from 'react-scroll';
 
+import AboutMeImg from '../../../images/chat_w.png';
+import WorksImg from '../../../images/code_w.png';
+import FooterImg from '../../../images/mail_w.png';
+import OpenBtn from '../../../images/toggle-btn.svg';
+import CloseBtn from '../../../images/close_button.png';
+import GithubLogo from '../../../images/github.png';
 
 function Navigation(props) {
   // const { aboutForwardRef, workForwardRef, footerForwardRef } = props;
   const { workForwardRef, footerForwardRef } = props;
 
-  const navMenuRef = useRef()
-  const menuBtnRef = useRef()
-  const menuCloseBtnRef = useRef()
-  const navfooterRef = useRef()
+  const navMenuRef = useRef();
+  const menuBtnRef = useRef();
+  const menuCloseBtnRef = useRef();
+  const navfooterRef = useRef();
 
   const smoothScroll = (componetRef) => {
     window.scrollTo({
-      top: componetRef["current"].offsetTop,
+      top: componetRef['current'].offsetTop,
       left: 0,
       behavior: 'smooth',
-    })
+    });
   };
 
   const eventAction = useCallback((action) => {
-
-    let componentsRef = [menuBtnRef.current, navMenuRef.current, menuCloseBtnRef.current, document.body];
+    let componentsRef = [
+      menuBtnRef.current,
+      navMenuRef.current,
+      menuCloseBtnRef.current,
+      document.body,
+    ];
 
     componentsRef.forEach((comp) => comp.classList[`${action}`]('active'));
-  }, [])
+  }, []);
 
-  const onMoveNavClick = useCallback((e) => {
-    e.preventDefault();
+  const onMoveNavClick = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    if (menuBtnRef.current.className.indexOf('active') !== -1) {
-      eventAction('remove')
-    }
+      if (menuBtnRef.current.className.indexOf('active') !== -1) {
+        eventAction('remove');
+      }
 
-    switch (e.target.classList.value) {
-      // case 'menu-link about':
-      //   smoothScroll(aboutForwardRef)
-      //   break;
-      case 'menu-link works':
-        smoothScroll(workForwardRef)
-        break;
-      case 'menu-link footer':
-        smoothScroll(footerForwardRef)
-        break;
-      default:
-        console.log('default')
-        break;
-    }
-  }, [eventAction, workForwardRef, footerForwardRef]);
+      switch (e.target.classList.value) {
+        // case 'menu-link about':
+        //   smoothScroll(aboutForwardRef)
+        //   break;
+        case 'menu-link works':
+          smoothScroll(workForwardRef);
+          break;
+        case 'menu-link footer':
+          smoothScroll(footerForwardRef);
+          break;
+        default:
+          console.log('default');
+          break;
+      }
+    },
+    [eventAction, workForwardRef, footerForwardRef]
+  );
   // }, [eventAction, aboutForwardRef, workForwardRef, footerForwardRef]);
 
-  const onMenuBtnClick = useCallback((e) => {
-    e.preventDefault();
+  const onMenuBtnClick = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    if (!menuBtnRef.current.className.indexOf('active') !== -1) {
-      eventAction('add')
-    }
-  }, [eventAction])
+      if (!menuBtnRef.current.className.indexOf('active') !== -1) {
+        eventAction('add');
+      }
+    },
+    [eventAction]
+  );
 
-  const onMenuCloseBtnClick = useCallback((e) => {
-    e.preventDefault();
+  const onMenuCloseBtnClick = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    if (menuBtnRef.current.className.indexOf('active') !== -1) {
-      eventAction('remove')
-    }
-  }, [eventAction])
+      if (menuBtnRef.current.className.indexOf('active') !== -1) {
+        eventAction('remove');
+      }
+    },
+    [eventAction]
+  );
 
-  const scrollMoveEvent = useMemo(() => () => eventAction('remove'), [eventAction])
+  const scrollMoveEvent = useMemo(() => () => eventAction('remove'), [eventAction]);
 
   return (
     <>
-      <MenuBtn
-        ref={menuBtnRef}
-        onClick={onMenuBtnClick}
-      >
-
-      </MenuBtn>
-      <NavMenu className="menu-wrap" ref={navMenuRef}>
+      <MenuBtn ref={menuBtnRef} onClick={onMenuBtnClick}></MenuBtn>
+      <NavMenu className='menu-wrap' ref={navMenuRef}>
         <ul>
           <li>
             <Link
-              className="menu-link about"
-              to="about-me"
+              className='menu-link about'
+              to='about-me'
               spy={true}
               smooth={true}
               onClick={scrollMoveEvent}
@@ -105,34 +112,27 @@ function Navigation(props) {
             </a> */}
           </li>
           <li>
-            <a
-              href="#works"
-              className="menu-link works"
-              onClick={onMoveNavClick}
-            >works
+            <a href='#works' className='menu-link works' onClick={onMoveNavClick}>
+              works
             </a>
           </li>
           <li>
-            <a
-              href="#footer"
-              className="menu-link footer"
-              onClick={onMoveNavClick}
-            >contact me
+            <a href='#footer' className='menu-link footer' onClick={onMoveNavClick}>
+              contact me
             </a>
           </li>
         </ul>
         <NavFooter ref={navfooterRef}>
-          <a href="https://github.com/oshosh"
-            target="_blank"
-            className="nav-footer-logo"
-            rel="noreferrer noopener">
-          </a>
+          <a
+            href='https://github.com/oshosh'
+            target='_blank'
+            className='nav-footer-logo'
+            rel='noreferrer noopener'
+            aria-label='github 프로필로 이동'
+          ></a>
           <p>© 2021 by SE HYUN OH. All rights reserved.</p>
         </NavFooter>
-        <MenuCloseBtn
-          ref={menuCloseBtnRef}
-          onClick={onMenuCloseBtnClick}
-        >
+        <MenuCloseBtn ref={menuCloseBtnRef} onClick={onMenuCloseBtnClick}>
           메뉴 닫기 버튼
         </MenuCloseBtn>
       </NavMenu>
@@ -142,10 +142,9 @@ function Navigation(props) {
 Navigation.prototype = {
   aboutForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
   workForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
-  footerForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) })
-}
+  footerForwardRef: PropTypes.shape({ component: PropTypes.instanceOf(React.Component) }),
+};
 export default Navigation;
-
 
 const MenuBtn = styled.button`
   display: none;
@@ -169,21 +168,21 @@ const MenuBtn = styled.button`
     top: 40px;
     right: 15px;
   }
-`
+`;
 
 const NavMenu = styled.nav`
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   top: 35%;
   right: 0;
   z-index: 99999;
   width: 60px;
   border-radius: 30px;
   color: #fff;
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, 0.6);
 
   opacity: 1;
 
@@ -191,7 +190,7 @@ const NavMenu = styled.nav`
     display: flex;
     flex-direction: column;
     height: 100%;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 
     & li {
@@ -201,49 +200,49 @@ const NavMenu = styled.nav`
 
   & a {
     display: flex;
-    
+
     width: 60px;
     height: 80px;
     flex-direction: column;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
     text-indent: -9999px;
   }
 
   & .about {
-    background: url(${AboutMeImg}) center no-repeat; 
+    background: url(${AboutMeImg}) center no-repeat;
     background-size: 55%;
     cursor: pointer;
   }
 
   & .works {
-    background: url(${WorksImg}) center no-repeat; 
+    background: url(${WorksImg}) center no-repeat;
     background-size: 55%;
   }
 
   & .footer {
-    background: url(${FooterImg}) center no-repeat; 
+    background: url(${FooterImg}) center no-repeat;
     background-size: 55%;
   }
 
   @media ${({ theme }) => theme.device.mobile} {
     top: -120%;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     background: #fff;
-    
+
     border-radius: 0;
     padding-top: 200px;
 
     opacity: 0;
     overflow-y: hidden;
 
-    & ul{
+    & ul {
       justify-content: flex-start;
       height: 50vh;
     }
-    
-    &.active{
+
+    &.active {
       opacity: 1;
       top: 0;
       animation: 0.5s ease-in-out 0s forwards bounce;
@@ -256,7 +255,7 @@ const NavMenu = styled.nav`
           top: 0;
         }
       }
-    }   
+    }
 
     & a {
       display: block;
@@ -265,7 +264,7 @@ const NavMenu = styled.nav`
       height: auto;
       font-size: 2.2rem;
       text-indent: 0;
-      
+
       text-decoration: none;
       color: ${({ theme }) => theme.colors.gray};
     }
@@ -275,7 +274,6 @@ const NavMenu = styled.nav`
     & .footer {
       background: none;
     }
-   
   }
 `;
 
@@ -284,7 +282,7 @@ const MenuCloseBtn = styled.button`
   position: absolute;
   top: 40px;
   right: 15px;
-  margin: 20px ;
+  margin: 20px;
   width: 39px;
   height: 39px;
   cursor: pointer;
@@ -292,9 +290,9 @@ const MenuCloseBtn = styled.button`
 
   text-indent: -9999px;
   background: url(${CloseBtn}) center no-repeat;
-  background-size: cover ;
-  border: none ;
-  
+  background-size: cover;
+  border: none;
+
   @media ${({ theme }) => theme.device.mobile} {
     opacity: 0;
     transition: all 0.3s linear 0s;
@@ -304,7 +302,7 @@ const MenuCloseBtn = styled.button`
       display: block;
     }
   }
-`
+`;
 
 const NavFooter = styled.div`
   & {
@@ -312,15 +310,14 @@ const NavFooter = styled.div`
     margin: 0 auto;
     width: 100%;
     height: 200px;
-    
   }
-  
+
   @media ${({ theme }) => theme.device.mobile} {
     & {
       display: block;
     }
-    
-    & .nav-footer-logo{
+
+    & .nav-footer-logo {
       width: 40px;
       height: 40px;
       background: url(${GithubLogo}) center no-repeat;
@@ -330,11 +327,11 @@ const NavFooter = styled.div`
       margin: 0 auto;
     }
 
-    & p{
+    & p {
       margin: 10px 0 20px;
       font-size: 0.8rem;
       color: #808080;
       text-align: center;
     }
   }
-`
+`;
